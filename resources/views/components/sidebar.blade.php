@@ -6,23 +6,23 @@
 
     <!-- Navigation -->
     <nav class="flex-1 flex flex-col gap-6 items-center">
-        <a href="#" class="block w-10 h-10">
-            <img src="{{ asset('images/Group 18.svg') }}" alt="Dashboard" class="w-full h-full object-contain">
+        <a href="#" class="block w-12 h-12">
+            <img src="{{ asset('images/Group 18.svg') }}" alt="Dashboard">
         </a>
-        <a href="#" class="block w-10 h-10">
-            <img src="{{ asset('images/Group 17.svg') }}" alt="Calendar" class="w-full h-full object-contain text-slate-300">
+        <a href="#" class="block w-12 h-12">
+            <img src="{{ asset('images/Group 17.svg') }}" alt="Calendar" >
         </a>
-        <a href="#" class="block w-10 h-10">
-            <img src="{{ asset('images/Group 16.svg') }}" alt="Messages" class="w-full h-full object-contain text-slate-300">
+        <a href="#" class="block w-12 h-12">
+            <img src="{{ asset('images/Group 16.svg') }}" alt="Messages" >
         </a>
-        <a href="#" class="block w-10 h-10">
-            <img src="{{ asset('images/Group 15.svg') }}" alt="Analytics" class="w-full h-full object-contain text-slate-300">
+        <a href="#" class="block w-12 h-12">
+            <img src="{{ asset('images/Group 15.svg') }}" alt="Analytics" >
         </a>
-        <a href="#" class="block w-10 h-10">
-            <img src="{{ asset('images/Group 19.svg') }}" alt="Settings" class="w-full h-full object-contain text-slate-300">
+        <a href="#" class="block w-12 h-12">
+            <img src="{{ asset('images/Group 19.svg') }}" alt="Settings" >
         </a>
-        <a href="#" class="block w-10 h-10">
-            <img src="{{ asset('images/Group 26.svg') }}" alt="LogOut" class="w-full h-full object-contain text-slate-300">
+        <a href="#" class="block w-12 h-12">
+            <img src="{{ asset('images/Group 26.svg') }}" alt="LogOut" >
         </a>
     </nav>
 </aside>
