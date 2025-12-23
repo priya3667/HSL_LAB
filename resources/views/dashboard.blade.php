@@ -89,32 +89,8 @@
             </div>
 
             <!-- Action Tracker -->
-            <div class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden min-h-[400px]">
-                <div class="p-8 pb-4 flex items-center justify-between">
-                    <h3 class="text-[14px] font-bold">Action Tracker</h3>
-                    <div class="hidden sm:flex items-center gap-2">
-                        <x-smart-filter label="All Actions" :active="true" />
-                        <x-smart-filter label="Clinical" />
-                    </div>
-                </div>
-                <!-- Table Logic -->
-                <div class="overflow-x-auto px-8 pb-8">
-                    <table class="w-full text-left border-separate border-spacing-y-4">
-                        <thead><tr class="text-[6px] uppercase font-bold text-slate-300"><th>Patient</th><th>Task</th><th>Expert</th><th>Status</th></tr></thead>
-                        <tbody class="text-[10px] font-medium">
-                            @foreach([['name'=>'John Doe','type'=>'Intake','status'=>'INPROGRESS','c'=>'yellow'],['name'=>'Maria G.','type'=>'Review','status'=>'PENDING','c'=>'orange']] as $r)
-                            <tr class="group hover:bg-slate-50">
-                                <td class="py-4 px-4 bg-white group-hover:bg-slate-50 rounded-l-xl font-bold">{{ $r['name'] }}</td>
-                                <td class="py-4 px-4 bg-white group-hover:bg-slate-50">{{ $r['type'] }}</td>
-                                <td class="py-4 px-4 bg-white group-hover:bg-slate-50"><span class="px-2 py-1 bg-slate-50 rounded-full text-[8px]">Dr. Rob</span></td>
-                                <td class="py-4 px-4 bg-white group-hover:bg-slate-50 rounded-r-xl">
-                                    <span class="px-3 py-1 text-[5px] font-bold bg-{{ $r['c'] }}-50 text-{{ $r['c'] }}-600 rounded-lg">{{ $r['status'] }}</span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+            <div class="mb-8">
+                <x-action-table />
             </div>
         </div>
     </main>
