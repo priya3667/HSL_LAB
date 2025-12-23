@@ -1,7 +1,7 @@
 <header class="flex items-center justify-between py-4 mb-4">
     <div>
         <h1 class="text-2xl font-bold text-slate-800 leading-tight">Daily Operations</h1>
-        <p class="text-slate-400 text-sm font-medium">December 19, 2025</p>
+        <p class="font-['Mulish'] font-medium text-[16px] leading-none tracking-normal text-[#7B7878]">December 19, 2025</p>
     </div>
 
     <div class="flex items-center gap-4">
@@ -14,24 +14,24 @@
         </div>
 
         <!-- Date view -->
-        <div class="flex items-center gap-2 px-4 py-2 bg-white border border-slate-100 rounded-lg text-sm text-slate-600 shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg text-sm text-slate-600 border border-[#C5C4C4] shadow-[var(--sds-size-depth-0)_var(--sds-size-depth-025)_var(--sds-size-depth-100)_var(--sds-size-depth-0)_var(--sds-color-black-100),var(--sds-size-depth-0)_var(--sds-size-depth-025)_var(--sds-size-depth-100)_var(--sds-size-depth-0)_var(--sds-color-black-200)]">
+            <img src="{{ asset('images/solar_calendar-outline.svg') }}" alt="Calendar" class="w-[18px] h-[18px]">
             <span class="font-medium">Today, Dec 19, 2025</span>
         </div>
 
         <!-- Notification -->
         <div class="relative p-2 text-slate-400">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <img src="{{ asset('images/Notification.svg') }}" alt="Notification">
         </div>
 
         <!-- User profile (Image left of name) -->
         <div class="flex items-center gap-3 pl-2">
-            <div class="w-10 h-10 rounded-full overflow-hidden border border-slate-100">
-                <img src="https://ui-avatars.com/api/?name=Sarah+Jones&background=random" alt="User" class="w-full h-full">
+            <div class="rounded-full overflow-hidden">
+                <img src="{{ asset('images/avatar.svg') }}" alt="User Profile">
             </div>
-            <div>
-                <p class="text-sm font-bold text-slate-800 leading-tight">Dr. Sarah Jones</p>
-                <p class="text-[11px] text-slate-400 font-medium">Command Center Lead</p>
+            <div class="flex flex-col">
+                <p class="font-['Instrument_Sans'] font-medium text-[24px] leading-none tracking-normal text-[#303030]">Dr. Sarah Jones</p>
+                <p class="font-['Inter'] font-normal text-[20px] leading-none tracking-normal text-[#A39D9D]">Command Center Lead</p>
             </div>
         </div>
     </div>
