@@ -16,9 +16,9 @@
             {!! $icon !!}
         </div>
         <div class="flex flex-col gap-2 justify-center">
-            <p class="text-[22px] text-[#000000] font-normal leading-tight">{{ $title }}</p>
-            <h3 class="text-[38px] font-extrabold text-[#272927] leading-none" style="font-family: 'Mulish', sans-serif;">{{ $value }}</h3>
-            <p class="text-[20px] text-[#8B8787] font-normal leading-none" style="font-family: 'Inter', sans-serif;">{{ $subtext }}</p>
+            <p class="text-[18px] text-[#000000] font-normal leading-tight">{{ $title }}</p>
+            <h3 class="text-[34px] font-extrabold text-[#272927] leading-none" style="font-family: 'Mulish', sans-serif;">{{ $value }}</h3>
+            <p class="text-[16px] text-[#8B8787] font-normal leading-none" style="font-family: 'Inter', sans-serif;">{{ $subtext }}</p>
         </div>
     </div>
 </div>
