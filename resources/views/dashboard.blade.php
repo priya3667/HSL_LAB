@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HSL Labs | Dashboard Command Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Mulish:wght@500;600;700;800&family=Inter:wght@400;600&family=Instrument+Sans:wght@500&display=swap" rel="stylesheet">
@@ -69,22 +70,60 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <!-- Patient Flow -->
                 <x-analytics-card title="Patient Flow">
-                    <img src="{{ asset('images/Patient_Flow_graph.svg') }}" alt="Patient Flow Graph" class="w-full h-full object-contain">
+                    <div id="patient-flow-chart" class="min-h-[160px] w-full"></div>
                 </x-analytics-card>
 
                 <!-- Task Distribution -->
-                <x-analytics-card title="Task Status">
-                    <img src="{{ asset('images/task_status_distribution_graph.svg') }}" alt="Task Status Graph" class="w-full h-full object-contain">
+                <x-analytics-card title="Task Status Distribution">
+                    <div class="flex flex-col h-full">
+                        <div class="flex justify-center items-center py-2">
+                            <div id="task-status-chart" style="width: 150px; height: 150px;"></div>
+                        </div>
+                        <div class="mt-auto px-4 pb-2 space-y-2">
+                            <div class="flex items-center justify-between text-[12px]">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-[#A8BBA3]"></div>
+                                    <span class="font-semibold text-slate-600">Completed</span>
+                                </div>
+                                <span class="font-bold text-slate-800">60%</span>
+                            </div>
+                            <div class="flex items-center justify-between text-[12px]">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-[#B87C4C]"></div>
+                                    <span class="font-semibold text-slate-600">Inprogress</span>
+                                </div>
+                                <span class="font-bold text-slate-800">20%</span>
+                            </div>
+                            <div class="flex items-center justify-between text-[12px]">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-[#EBD9D1]"></div>
+                                    <span class="font-semibold text-slate-600">Pending</span>
+                                </div>
+                                <span class="font-bold text-slate-800">20%</span>
+                            </div>
+                        </div>
+                    </div>
                 </x-analytics-card>
 
                 <!-- Inventory Trend -->
-                <x-analytics-card title="Inventory Trend">
-                    <img src="{{ asset('images/Inventory_Usage_Trend_graph.svg') }}" alt="Inventory Trend Graph" class="w-full h-full object-contain">
+                <x-analytics-card title="Inventory Usage Trend">
+                    <div id="inventory-usage-chart" class="min-h-[160px] w-full"></div>
                 </x-analytics-card>
 
                 <!-- Sales -->
-                <x-analytics-card title="Sales Health">
-                    <img src="{{ asset('images/sales_health_graph.png') }}" alt="Sales Health Graph" class="w-full h-full object-contain">
+                <!-- Sales -->
+                <x-analytics-card title="Sales Performance">
+                    <div class="flex flex-col h-full justify-between">
+                        <div id="sales-performance-chart" class="min-h-[160px] w-full"></div>
+                        <div class="px-2 pb-2">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl font-bold text-slate-800">30%</span>
+                                <p class="text-[10px] text-slate-500 font-medium leading-tight">
+                                    Your sales performance is 30%<br>better compare to last month
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </x-analytics-card>
             </div>
 
@@ -102,5 +141,366 @@
         <button class="text-slate-400 flex flex-col items-center gap-1"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="text-[4px] font-bold">PROFILE</span></button>
     </div>
 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var options = {
+                series: [{
+                    name: 'Patients',
+                    data: [85, 110, 75, 95, 112, 80, 60]
+                }],
+                chart: {
+                    type: 'area',
+                    height: 200,
+                    toolbar: { show: false },
+                    zoom: { enabled: false },
+                    sparkline: { enabled: false },
+                    fontFamily: 'Mulish, sans-serif'
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 2,
+                    colors: ['#B87C4C']
+                },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        type: 'vertical',
+                        colorStops: [
+                            { offset: 0, color: "#EBD9D1", opacity: 0.6 },
+                            { offset: 100, color: "#A8BBA3", opacity: 0.2 }
+                        ]
+                    }
+                },
+                xaxis: {
+                    type: 'category',
+                    categories: [['Mon', '15'], ['Tue', '16'], ['Wed', '17'], ['Thu', '18'], ['Fri', '19'], ['Sat', '20'], ['Sun', '21']],
+                    position: 'top',
+                    labels: {
+                        show: true,
+                        style: {
+                            colors: '#2E2E30',
+                            fontSize: '12px',
+                            fontWeight: 700
+                        },
+                        rotate: 0,
+                        offsetY: 0
+                    },
+                    axisBorder: { show: false },
+                    axisTicks: { show: false },
+                    tooltip: { enabled: false }
+                },
+                yaxis: {
+                    show: false
+                },
+                grid: {
+                    show: true,
+                    borderColor: '#B1B1B1',
+                    strokeDashArray: 0,
+                    position: 'back',
+                    xaxis: { lines: { show: true } },
+                    yaxis: { lines: { show: false } },
+                    padding: { top: 20, right: 0, bottom: 0, left: 0 }
+                },
+                annotations: {
+                    xaxis: [{
+                        x: '19',
+                        borderColor: '#001DFF',
+                        borderWidth: 1.5,
+                        label: {
+                            show: false
+                        }
+                    }],
+                    points: [{
+                        x: '19',
+                        y: 112,
+                        marker: {
+                            size: 0
+                        },
+                        label: {
+                            borderColor: '#E8E7E7',
+                            borderWidth: 1,
+                            borderRadius: 5,
+                            text: '112: Patient Flow Today',
+                            style: {
+                                background: '#fff',
+                                color: '#B87C4C',
+                                fontSize: '11px',
+                                fontWeight: 700,
+                                padding: { left: 10, right: 10, top: 4, bottom: 4 }
+                            },
+                            offsetY: -10
+                        }
+                    }]
+                },
+                tooltip: {
+                    enabled: true,
+                    custom: function({series, seriesIndex, dataPointIndex, w}) {
+                        return '<div class="px-3 py-1 bg-white border border-[#E8E7E7] rounded-lg shadow-sm text-[11px] font-bold text-[#B87C4C]">' +
+                            series[seriesIndex][dataPointIndex] + ' Patients' +
+                            '</div>';
+                    }
+                },
+                markers: {
+                    size: 0,
+                    hover: { size: 5, sizeOffset: 3 }
+                },
+                colors: ['#B87C4C']
+            };
+
+            var chart = new ApexCharts(document.querySelector("#patient-flow-chart"), options);
+            chart.render();
+
+            // Task Status Donut Chart
+            var taskOptions = {
+                series: [60, 20, 20],
+                chart: {
+                    type: 'donut',
+                    height: 150,
+                    width: 150,
+                    animations: { enabled: false },
+                    sparkline: { enabled: false },
+                    fontFamily: 'Plus Jakarta Sans, sans-serif'
+                },
+                labels: ['Completed', 'Inprogress', 'Pending'],
+                colors: ['#A8BBA3', '#B87C4C', '#EBD9D1'],
+                stroke: { width: 0 },
+                states: {
+                    hover: { filter: { type: 'none' } },
+                    active: { filter: { type: 'none' } }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                plotOptions: {
+                    pie: {
+                        startAngle: 72,
+                        expandOnClick: false,
+                        donut: {
+                            size: '70%',
+                            labels: {
+                                show: true,
+                                name: {
+                                    show: true,
+                                    fontSize: '14px',
+                                    fontWeight: 600,
+                                    color: '#939393',
+                                    offsetY: 20
+                                },
+                                value: {
+                                    show: true,
+                                    fontSize: '32px',
+                                    fontWeight: 800,
+                                    color: '#2E2E30',
+                                    offsetY: -15,
+                                    formatter: function (val) { return '156' }
+                                },
+                                total: {
+                                    show: true,
+                                    label: 'Total',
+                                    color: '#939393',
+                                    formatter: function (w) { return '156' }
+                                }
+                            }
+                        }
+                    }
+                },
+                legend: { show: false },
+                tooltip: { enabled: false }
+            };
+
+            var taskChart = new ApexCharts(document.querySelector("#task-status-chart"), taskOptions);
+            taskChart.render();
+
+            // Inventory Usage Trend Bar Chart
+            var inventoryOptions = {
+                series: [{
+                    name: 'Primary Usage',
+                    data: [45, 30, 87, 50]
+                }, {
+                    name: 'Secondary Usage',
+                    data: [15, 25, 57, 40]
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 200,
+                    toolbar: { show: false },
+                    fontFamily: 'Plus Jakarta Sans, sans-serif'
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '35%',
+                        borderRadius: 2,
+                        borderRadiusApplication: 'end'
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    show: false
+                },
+                colors: ['#B87C4C', '#EBD9D1'],
+                xaxis: {
+                    categories: ['Used Today', 'Used Yesterday', 'Supplies Equipment', 'Supplies Used Today'],
+                    labels: {
+                        show: true,
+                        style: {
+                            colors: '#767676',
+                            fontSize: '10px',
+                            fontWeight: 500
+                        },
+                        rotate: 0,
+                        offsetY: 0
+                    },
+                    axisBorder: { show: false },
+                    axisTicks: { show: false }
+                },
+                yaxis: {
+                    labels: {
+                        show: true,
+                        style: {
+                            colors: '#767676',
+                            fontSize: '10px',
+                            fontWeight: 500
+                        },
+                        formatter: function(val) {
+                            return Math.round(val);
+                        }
+                    }
+                },
+                grid: {
+                    show: true,
+                    borderColor: '#B1B1B1',
+                    strokeDashArray: 0,
+                    opacity: 0.5,
+                    position: 'back',
+                    xaxis: { lines: { show: false } },
+                    yaxis: { lines: { show: true } },
+                    padding: { top: 0, right: 10, bottom: 0, left: 10 }
+                },
+                legend: {
+                    show: false
+                },
+                tooltip: {
+                    enabled: true,
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(val) {
+                            return val + ' units';
+                        }
+                    },
+                    style: {
+                        fontSize: '11px',
+                        fontWeight: 600
+                    }
+                }
+            };
+
+            var inventoryChart = new ApexCharts(document.querySelector("#inventory-usage-chart"), inventoryOptions);
+            inventoryChart.render();
+
+            // Sales Health Area Chart
+            // Sales Performance Combo Chart
+            var salesOptions = {
+                series: [{
+                    name: 'Background',
+                    type: 'bar',
+                    data: [100, 100, 100, 100, 100, 100, 100]
+                }, {
+                    name: 'Performance',
+                    type: 'line',
+                    data: [45, 75, 35, 60, 35, 55, 25]
+                }],
+                chart: {
+                    type: 'line',
+                    height: 160,
+                    toolbar: { show: false },
+                    fontFamily: 'Plus Jakarta Sans, sans-serif'
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '80%',
+                        borderRadius: 4
+                    }
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: [0, 3]
+                },
+                fill: {
+                    opacity: [1, 1]
+                },
+                colors: ['#FCF8F6', '#B87C4C'], 
+                dataLabels: {
+                    enabled: false
+                },
+                xaxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    labels: {
+                        show: true,
+                        style: {
+                            colors: '#767676',
+                            fontSize: '11px',
+                            fontWeight: 500
+                        },
+                        rotate: 0
+                    },
+                    axisBorder: { show: false },
+                    axisTicks: { show: false }
+                },
+                yaxis: {
+                    show: false,
+                    max: 100
+                },
+                grid: {
+                    show: false
+                },
+                legend: {
+                    show: false
+                },
+                annotations: {
+                    points: [{
+                        x: 'May',
+                        y: 35,
+                        marker: {
+                            size: 4,
+                            fillColor: '#fff',
+                            strokeColor: '#B87C4C',
+                            strokeWidth: 2,
+                            radius: 2
+                        },
+                        label: {
+                            borderColor: '#E8E7E7',
+                            style: {
+                                color: '#B87C4C',
+                                background: '#fff',
+                                fontSize: '10px', 
+                                fontWeight: 700,
+                                padding: { left: 8, right: 8, top: 4, bottom: 4 }
+                            },
+                            text: '4500: Low sales in May',
+                            offsetY: -30
+                        }
+                    }]
+                },
+                tooltip: {
+                    enabled: true,
+                    style: {
+                        fontSize: '11px'
+                    }
+                }
+            };
+
+            var salesChart = new ApexCharts(document.querySelector("#sales-performance-chart"), salesOptions);
+            salesChart.render();
+        });
+    </script>
 </body>
 </html>

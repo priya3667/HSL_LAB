@@ -10,7 +10,7 @@
     $iconStyle = $bgStyles[$color] ?? $bgStyles['blue'];
 @endphp
 
-<div class="bg-white p-5 rounded-xl border border-[#E8E7E7] shadow-[0px_3px_50px_0px_#00000014] flex flex-col gap-4">
+<div class="bg-white p-5 rounded-xl border border-[#E8E7E7] shadow-[0px_4px_4px_0px_#00000040] flex flex-col gap-4">
     <div class="flex items-center gap-4">
         <div class="w-12 h-12 rounded-lg {{ $iconStyle }} flex items-center justify-center">
             {!! $icon !!}
