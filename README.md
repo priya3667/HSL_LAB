@@ -1,62 +1,63 @@
-# HSL Labs — Front-End Designer Assignment
+# HSL Labs | Operations Dashboard
 
-## Project Overview
-This repository contains the **Daily Operations Dashboard** (Command Center) for HSL Labs. The goal was to build a clean, modern, and fully responsive dashboard using Laravel Blade and Tailwind CSS.
+A premium, high-fidelity operations dashboard for laboratory management, built with Laravel Blade and Tailwind CSS. This dashboard provides real-time analytics, task tracking, and administrative controls with a focus on mobile responsiveness and clean aesthetics.
 
-### Quick Access
-- **Main Dashboard**: [http://localhost:8000/](http://localhost:8000/)
-- **Components Folder**: `/resources/views/components/`
-- **Rationale Document**: [RATIONALE.md](./RATIONALE.md)
-- **Hi-Fi Design Reference**: `/design/hifi/final_design.png`
+## 🚀 Key Features
 
-## Key Features
-- **4+ KPI Cards**: Live metrics with color-coded status indicators.
-- **4 Analytics Widgets**: Custom SVG-based charts (Patient Flow, Task Status, Inventory, Sales).
-- **Action Tracker Table**: High-density grid with smart filtering and status capsules.
-- **Full Responsiveness**: 
-    - **Desktop**: Fixed Sidebar + Header.
-    - **Adaptive Menu**: Fixed bottom Quick Actions Bar for mobile/tablet.
-- **Blade Component Library**: 
-    - `<x-sidebar />`
-    - `<x-header />`
-    - `<x-kpi-card />`
-    - `<x-analytics-card />`
-    - `<x-smart-filter />`
+- **Dynamic Analytics**: Real-time data visualization using ApexCharts (Patient Flow, Task Distribution, Inventory Trends, Sales).
+- **Advanced Action Tracker**: High-density table with multi-select, searching, and status-based filtering.
+- **Bulk Management**: Integrated systems for bulk editing and deleting entries with custom-designed responsive modals.
+- **Date Management**: Fully integrated Flatpickr calendar for global and table-specific date filtering.
+- **Mobile-First Design**: Optimized for all screen sizes, including icon-only button transitions on mobile and centered layout components.
+- **Interactive UI**: Clean, professional design with smooth transitions, backdrop blurs, and premium typography.
 
-## Installation & Setup
-1. **Clone the repo**:
+## 🛠️ Technology Stack
+
+- **Framework**: Laravel 10.x (Blade Components)
+- **Styling**: Tailwind CSS
+- **Charts**: ApexCharts.js
+- **Date Picker**: Flatpickr.js
+- **Fonts**: Google Fonts (Plus Jakarta Sans, Mulish, Inter, Instrument Sans)
+
+## 💻 Installation & Setup
+
+Follow these steps to get the HSL Labs Dashboard running on your local machine:
+
+1. **Clone the Repository**
    ```bash
    git clone <repository-link>
-   cd hsl-labs-dashboard
+   cd HSL_LAB
    ```
-2. **Install Dependencies**:
+
+2. **Install Composer Dependencies**
    ```bash
    composer install
-   npm install
    ```
-3. **Environment Setup**:
+
+3. **Configure Environment**
+   - Copy the example environment file:
+     ```bash
+     cp .env.example .env
+     ```
+   - Generate the application key:
+     ```bash
+     php artisan key:generate
+     ```
+
+4. **Launch the Server**
+   Start the Laravel development server:
    ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
-4. **Run the Application**:
-   ```bash
-   npm run dev
-   # In a separate terminal
    php artisan serve
    ```
+   Access the dashboard at: `http://localhost:8000`
 
-## Folder Structure
-```text
-/resources/views/dashboard.blade.php  # Main Dashboard View
-/resources/views/components/           # Reusable Blade Components
-/design/wireframes/                    # Low-fidelity blueprints
-/design/hifi/                         # High-fidelity design references
-/README.md                             # Project overview
-/RATIONALE.md                          # UX and Technical rationale
-```
+## 📂 Project Structure
 
-## UI/UX Highlights
-- **Smart Filtering**: Interactive pill filters for clinical, admin, and inventory views.
-- **Micro-interactions**: Hover effects on cards and table rows for better feedback.
-- **Mobile-First**: A dedicated bottom navigation bar for mobile users to ensure one-handed usability.
+- `resources/views/dashboard.blade.php`: The main entry point and layout for the dashboard.
+- `resources/views/components/`: Directory containing all modular Blade components:
+  - `header.blade.php`: Responsive search and global date selection.
+  - `sidebar.blade.php`: Desktop-optimized navigation.
+  - `action-table.blade.php`: The core logic for task management, filtering, and bulk actions.
+  - `kpi-card.blade.php`: Reusable metric display cards.
+  - `analytics-card.blade.php`: Generic container for ApexCharts widgets.
+- `public/images/`: Storage for all custom SVGs and assets used throughout the UI.

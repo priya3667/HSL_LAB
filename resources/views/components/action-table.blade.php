@@ -1,28 +1,20 @@
 <div class="w-full bg-white rounded-[12px] border border-[#E8E7E7] shadow-[0px_4px_4px_0px_#00000040] flex flex-col items-center justify-center py-4 md:py-[30px] px-2 md:px-[16px] font-sans">
-
     <div class="w-full max-w-[1468px] h-auto flex flex-col gap-[15.21px]">
-
         <div class="flex flex-col lg:flex-row items-center justify-between pb-1 gap-4 px-2 md:px-6">
             <h2 class="font-inter font-semibold text-[16px] md:text-[20px] leading-[100%] text-[#45464E] self-start lg:self-auto">Action Tracker Table</h2>
-            
             <div class="flex items-center flex-wrap gap-[7.6px] w-full lg:w-auto pb-2 lg:pb-0">
-
                 <div class="relative min-w-[133.85px] h-[22.05px] flex-shrink-0">
                     <div class="absolute inset-y-0 left-[6.08px] flex items-center pointer-events-none">
                         <svg class="h-3 w-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </div>
                     <input type="text" id="action-search-input" class="block w-full h-full pl-[22px] pr-2 border-[0.76px] border-[#CFD3D4] rounded-[20px] text-[10px] text-slate-600 placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-all bg-white leading-none" placeholder="Search">
                 </div>
-                
-
                 <div class="flex items-center gap-[9.13px] flex-nowrap">
-
                     <div class="relative" id="filter-container">
                         <button id="filter-button" class="flex items-center justify-center gap-[7.6px] h-[22.05px] px-[8.08px] md:px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors flex-shrink-0" title="Filter">
                             <img src="{{ asset('images/Filter.svg') }}" alt="Filter" class="w-3.5 h-3.5 md:w-3 md:h-3">
                             <span class="text-[10px] font-medium leading-[100%] text-[#53545C] hidden md:inline">Filter</span>
                         </button>
-                        <!-- Filter Dropdown -->
                         <div id="filter-dropdown" class="hidden absolute top-full mt-2 left-0 w-36 bg-white border border-slate-200 rounded-lg shadow-lg z-20 py-1">
                             <div class="px-3 py-2 text-[10px] font-semibold text-slate-500 border-b border-slate-100 uppercase tracking-wider">Status</div>
                             <label class="flex items-center px-3 py-2 hover:bg-slate-50 cursor-pointer">
@@ -43,26 +35,19 @@
                             </label>
                         </div>
                     </div>
-
-
                     <button id="date_filter_trigger" class="flex items-center justify-center gap-[7.6px] h-[22.05px] px-[8.08px] md:px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors flex-shrink-0" title="Date">
                         <img src="{{ asset('images/solar_calendar-outline.svg') }}" alt="Date" class="w-3.5 h-3.5 md:w-3 md:h-3">
                         <span class="text-[10px] font-medium leading-[100%] text-[#53545C] hidden md:inline">Date</span>
                     </button>
-
-
                     <button class="flex items-center justify-center gap-[7.6px] h-[22.05px] px-[8.08px] md:px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors flex-shrink-0" title="Share">
                          <img src="{{ asset('images/Send.svg') }}" alt="Share" class="w-3.5 h-3.5 md:w-3 md:h-3">
                         <span class="text-[10px] font-medium leading-[100%] text-[#53545C] hidden md:inline">Share</span>
                     </button>
-                    
-
                     <div class="relative" id="bulk-action-container">
                         <button id="bulk-action-button" class="flex items-center justify-center gap-[7.6px] h-[22.05px] px-[8.08px] md:px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors flex-shrink-0" title="Bulk">
                             <span class="text-[10px] font-medium leading-[100%] text-[#53545C] hidden md:inline">Bulk Action</span>
                             <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
                         </button>
-                        <!-- Bulk Dropdown -->
                         <div id="bulk-dropdown" class="hidden absolute top-full mt-2 right-0 w-32 bg-white border border-slate-200 rounded-lg shadow-lg z-20 overflow-hidden">
                             <button id="bulk-edit-btn" class="w-full text-left px-4 py-2 text-[11px] text-slate-600 hover:bg-slate-50 border-b border-slate-100 flex items-center gap-2">
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
@@ -77,8 +62,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="overflow-x-auto flex-1">
             <table class="w-full text-left text-sm text-slate-600">
                 <thead class="bg-white border-y-[0.76px] border-[#E1E2E9] font-inter font-normal text-[10.65px] leading-[100%] tracking-[0] text-[#2C2D33]">
@@ -136,7 +119,6 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
-
                     <tr>
                         <td colspan="8" class="p-0">
                             <div class="h-[31px] w-full flex items-center justify-between px-6 border-t-[0.76px] border-[#E1E2E9] bg-white font-inter font-normal text-[10.65px] leading-[100%] text-[#A6A8B1]">
@@ -154,7 +136,6 @@
                                     <span class="text-[#A6A8B1]">Items per page</span>
                                     <span class="text-[#666666]">1-10 of 200 items</span>
                                 </div>
-                                
                                 <div class="flex items-center gap-[7.6px]">
                                      <div class="flex items-center gap-[6.08px]">
                                         <div class="relative">
@@ -179,7 +160,6 @@
                             </div>
                         </td>
                     </tr>
-                    
                     @php
                         $rows = [
                             ['task' => 'Discharge Summary Review', 'cat' => 'Clinical', 'pat' => 'P-10034 (John Doe)', 'prio' => 'High', 'assign' => 'Dr. Sarah Chen', 'action' => 'Review', 'status' => 'Completed', 's_color' => 'emerald'],
@@ -222,11 +202,7 @@
                 </tbody>
             </table>
         </div>
-
-
     </div>
-
-    <!-- Edit Modal -->
     <div id="edit-modal" class="fixed inset-0 bg-black/60 z-[9999] hidden flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-[16px] shadow-2xl w-[95%] max-w-[500px] overflow-hidden transform transition-all">
             <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-white">
@@ -235,13 +211,11 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
-            
             <div class="p-6 space-y-4">
                 <div class="space-y-1">
                     <label class="block text-[12px] font-bold text-gray-500 uppercase tracking-wide">Task Name</label>
                     <input type="text" id="edit-task" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-slate-400 transition-all text-gray-800">
                 </div>
-                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="space-y-1">
                         <label class="block text-[12px] font-bold text-gray-500 uppercase tracking-wide">Category</label>
@@ -252,7 +226,6 @@
                         <input type="text" id="edit-pat" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-slate-400 transition-all text-gray-800">
                     </div>
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <div class="space-y-1">
                         <label class="block text-[12px] font-bold text-gray-500 uppercase tracking-wide">Priority</label>
@@ -270,15 +243,12 @@
                     </div>
                 </div>
             </div>
-
             <div class="px-6 py-4 bg-gray-50 flex justify-end gap-3">
                 <button id="cancel-edit" class="px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">Cancel</button>
                 <button id="save-edit" class="px-6 py-2 text-sm font-semibold text-white bg-[#45464E] hover:bg-black rounded-lg transition-all shadow-sm">Save Changes</button>
             </div>
         </div>
     </div>
-
-    <!-- Message Modal -->
     <div id="message-modal" class="fixed inset-0 bg-black/60 z-[9999] hidden flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-[16px] shadow-2xl w-[90%] max-w-[400px] overflow-hidden transform transition-all">
             <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
@@ -295,8 +265,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Confirm Modal -->
     <div id="confirm-modal" class="fixed inset-0 bg-black/60 z-[9999] hidden flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white rounded-[16px] shadow-2xl w-[90%] max-w-[400px] overflow-hidden transform transition-all">
             <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
@@ -328,12 +296,9 @@
             position: "below center"
         });
     });
-
-    // Checkbox Logic
     document.addEventListener("DOMContentLoaded", function() {
         const headerCheckbox = document.getElementById('header-checkbox');
         const rowCheckboxes = document.querySelectorAll('.row-checkbox');
-
         if(headerCheckbox) {
             headerCheckbox.addEventListener('change', function() {
                 const isChecked = this.checked;
@@ -342,35 +307,27 @@
                 });
             });
         }
-
         rowCheckboxes.forEach(cb => {
             cb.addEventListener('change', function() {
                 const allChecked = Array.from(rowCheckboxes).every(c => c.checked);
-                
                 if(headerCheckbox) {
                     headerCheckbox.checked = allChecked;
                 }
             });
         });
-
-        // Search and Filter Logic
         const searchInput = document.getElementById('action-search-input');
         const tableRows = document.querySelectorAll('.action-table-row');
         const filterButton = document.getElementById('filter-button');
         const filterDropdown = document.getElementById('filter-dropdown');
         const filterRadios = document.querySelectorAll('input[name="status-filter"]');
-
         let currentSearch = '';
         let currentStatus = 'All';
-
         function applyFilters() {
             tableRows.forEach(row => {
                 const text = row.innerText.toLowerCase();
                 const status = row.getAttribute('data-status');
-                
                 const matchesSearch = text.includes(currentSearch);
                 const matchesStatus = currentStatus === 'All' || status === currentStatus;
-
                 if (matchesSearch && matchesStatus) {
                     row.style.display = '';
                 } else {
@@ -378,45 +335,36 @@
                 }
             });
         }
-
         if (searchInput) {
             searchInput.addEventListener('input', function(e) {
                 currentSearch = e.target.value.toLowerCase().trim();
                 applyFilters();
             });
         }
-
         if (filterButton && filterDropdown) {
             filterButton.addEventListener('click', function(e) {
                 e.stopPropagation();
                 filterDropdown.classList.toggle('hidden');
             });
-
             document.addEventListener('click', function(e) {
                 if (!filterDropdown.contains(e.target) && !filterButton.contains(e.target)) {
                     filterDropdown.classList.add('hidden');
                 }
             });
-
             filterRadios.forEach(radio => {
                 radio.addEventListener('change', function(e) {
                     currentStatus = e.target.value;
-                    
-                    // Update button text
                     const span = filterButton.querySelector('span');
                     if (currentStatus === 'All') {
                         span.textContent = 'Filter';
                     } else {
                         span.textContent = 'Filter : ' + currentStatus;
                     }
-
                     applyFilters();
                     filterDropdown.classList.add('hidden'); 
                 });
             });
         }
-
-        // Bulk Action Logic
         const bulkButton = document.getElementById('bulk-action-button');
         const bulkDropdown = document.getElementById('bulk-dropdown');
         const bulkEditBtn = document.getElementById('bulk-edit-btn');
@@ -425,30 +373,23 @@
         const closeModal = document.getElementById('close-modal');
         const cancelEdit = document.getElementById('cancel-edit');
         const saveEdit = document.getElementById('save-edit');
-        
         let editingRow = null;
-
-        // Modal Helpers
         const messageModal = document.getElementById('message-modal');
         const messageText = document.getElementById('message-text');
         const closeMessageBtn = document.getElementById('close-message-modal');
         const messageOkBtn = document.getElementById('message-ok-btn');
-
         const confirmModal = document.getElementById('confirm-modal');
         const confirmText = document.getElementById('confirm-text');
         const closeConfirmBtn = document.getElementById('close-confirm-modal');
         const confirmCancelBtn = document.getElementById('confirm-cancel-btn');
         const confirmYesBtn = document.getElementById('confirm-yes-btn');
-        
         let confirmCallback = null;
-
         function showMessage(msg) {
             if(messageText && messageModal) {
                 messageText.textContent = msg;
                 messageModal.classList.remove('hidden');
             }
         }
-        
         function showConfirm(msg, callback) {
             if(confirmText && confirmModal) {
                 confirmText.textContent = msg;
@@ -456,106 +397,83 @@
                 confirmModal.classList.remove('hidden');
             }
         }
-        
         function hideMessage() { if(messageModal) messageModal.classList.add('hidden'); }
         function hideConfirm() { if(confirmModal) confirmModal.classList.add('hidden'); confirmCallback = null; }
-
         [closeMessageBtn, messageOkBtn].forEach(b => b?.addEventListener('click', hideMessage));
         [closeConfirmBtn, confirmCancelBtn].forEach(b => b?.addEventListener('click', hideConfirm));
-        
         if(confirmYesBtn) {
             confirmYesBtn.addEventListener('click', () => {
                 if(confirmCallback) confirmCallback();
                 hideConfirm();
             });
         }
-
         if (bulkButton && bulkDropdown) {
             bulkButton.addEventListener('click', function(e) {
                 e.stopPropagation();
                 bulkDropdown.classList.toggle('hidden');
             });
-
             document.addEventListener('click', function(e) {
                 if (!bulkDropdown.contains(e.target) && !bulkButton.contains(e.target)) {
                     bulkDropdown.classList.add('hidden');
                 }
             });
         }
-
         if (bulkDeleteBtn) {
             bulkDeleteBtn.addEventListener('click', function() {
                 const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
                 bulkDropdown.classList.add('hidden');
-                
                 if (checkedBoxes.length === 0) {
                     showMessage('Please select at least one row to delete.');
                     return;
                 }
-                
                 showConfirm(`Are you sure you want to delete ${checkedBoxes.length} item(s)?`, () => {
                     checkedBoxes.forEach(box => {
                         const row = box.closest('tr');
                         row.remove();
                     });
-                    // Reset header checkbox
                     const headerCheckbox = document.getElementById('header-checkbox');
                     if(headerCheckbox) headerCheckbox.checked = false;
                 });
             });
         }
-
         if (bulkEditBtn) {
             bulkEditBtn.addEventListener('click', function() {
                 const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
                 bulkDropdown.classList.add('hidden');
-
                 if (checkedBoxes.length !== 1) {
                     showMessage('Please select exactly one row to edit.');
                     return;
                 }
-
                 editingRow = checkedBoxes[0].closest('tr');
-                const cells = editingRow.querySelectorAll('td'); // Adjust based on your cell structure
-                
-                // Extraction - checking index based on table structure
-                // 0: Checkbox + Task Name
+                const cells = editingRow.querySelectorAll('td');
                 const taskName = cells[0].querySelector('span').innerText;
                 const category = cells[1].innerText;
                 const patient = cells[2].innerText;
                 const priority = cells[3].innerText;
                 const assigned = cells[4].innerText;
-                
                 document.getElementById('edit-task').value = taskName;
                 document.getElementById('edit-cat').value = category;
                 document.getElementById('edit-pat').value = patient;
                 document.getElementById('edit-prio').value = priority;
                 document.getElementById('edit-assign').value = assigned;
-
                 editModal.classList.remove('hidden');
             });
         }
-
         const hideModal = () => {
             editModal.classList.add('hidden');
             editingRow = null;
         };
-
         if(closeModal) closeModal.addEventListener('click', hideModal);
         if(cancelEdit) cancelEdit.addEventListener('click', hideModal);
-
         if(saveEdit) {
             saveEdit.addEventListener('click', function() {
                 if(!editingRow) return;
-
                 const cells = editingRow.querySelectorAll('td');
-                
                 cells[0].querySelector('span').innerText = document.getElementById('edit-task').value;
                 cells[1].innerText = document.getElementById('edit-cat').value;
                 cells[2].innerText = document.getElementById('edit-pat').value;
                 cells[3].innerText = document.getElementById('edit-prio').value;
                 cells[4].innerText = document.getElementById('edit-assign').value;
-
                 hideModal();
             });
         }
