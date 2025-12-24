@@ -83,7 +83,19 @@
                 <x-analytics-card title="Task Status Distribution">
                     <div class="flex flex-col h-full">
                         <div class="flex justify-center items-center py-2">
-                            <div id="task-status-chart" style="width: 150px; height: 150px;"></div>
+                            <div class="relative w-[155px] h-[151px]">
+                                <div id="task-status-chart" style="width: 155px; height: 151px;"></div>
+                                <!-- Custom Data Labels with Ellipse Background -->
+                                <div class="absolute top-[20px] left-[10px] w-[34px] h-[32px] flex items-center justify-center bg-contain bg-no-repeat bg-center" style="background-image: url('{{ asset('images/Ellipse 1.svg') }}');">
+                                    <span class="text-[10px] font-bold text-slate-900 pt-1">20%</span>
+                                </div>
+                                <div class="absolute top-[20px] right-[10px] w-[34px] h-[32px] flex items-center justify-center bg-contain bg-no-repeat bg-center" style="background-image: url('{{ asset('images/Ellipse 1.svg') }}');">
+                                    <span class="text-[10px] font-bold text-slate-900 pt-1">20%</span>
+                                </div>
+                                <div class="absolute bottom-[10px] left-1/2 -translate-x-1/2 w-[34px] h-[32px] flex items-center justify-center bg-contain bg-no-repeat bg-center" style="background-image: url('{{ asset('images/Ellipse 1.svg') }}');">
+                                    <span class="text-[10px] font-bold text-slate-900 pt-1">60%</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="mt-auto px-4 pb-2 space-y-2">
                             <div class="flex items-center justify-between text-[12px]">
@@ -266,8 +278,8 @@
                 series: [60, 20, 20],
                 chart: {
                     type: 'donut',
-                    height: 150,
-                    width: 150,
+                    height: 151,
+                    width: 155,
                     animations: { enabled: false },
                     sparkline: { enabled: false },
                     fontFamily: 'Plus Jakarta Sans, sans-serif'
@@ -325,11 +337,11 @@
             // Inventory Usage Trend Bar Chart
             var inventoryOptions = {
                 series: [{
-                    name: 'Primary Usage',
-                    data: [45, 30, 87, 50]
+                    name: 'Used Today',
+                    data: [45, 70, 47, 65, 85, 40]
                 }, {
-                    name: 'Secondary Usage',
-                    data: [15, 25, 57, 40]
+                    name: 'Used Yesterday',
+                    data: [25, 55, 30, 50, 65, 25]
                 }],
                 chart: {
                     type: 'bar',
@@ -340,7 +352,7 @@
                 plotOptions: {
                     bar: {
                         horizontal: false,
-                        columnWidth: '35%',
+                        columnWidth: '30%',
                         borderRadius: 2,
                         borderRadiusApplication: 'end'
                     }
@@ -349,25 +361,23 @@
                     enabled: false
                 },
                 stroke: {
-                    show: false
+                    show: true,
+                    width: 4,
+                    colors: ['transparent']
                 },
                 colors: ['#B87C4C', '#EBD9D1'],
                 xaxis: {
-                    categories: ['Used Today', 'Used Yesterday', 'Supplies Equipment', 'Supplies Used Today'],
+                    categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
                     labels: {
-                        show: true,
-                        style: {
-                            colors: '#767676',
-                            fontSize: '10px',
-                            fontWeight: 500
-                        },
-                        rotate: 0,
-                        offsetY: 0
+                        show: false
                     },
                     axisBorder: { show: false },
                     axisTicks: { show: false }
                 },
                 yaxis: {
+                    tickAmount: 2,
+                    min: 0,
+                    max: 100,
                     labels: {
                         show: true,
                         style: {
@@ -382,16 +392,35 @@
                 },
                 grid: {
                     show: true,
-                    borderColor: '#B1B1B1',
+                    borderColor: '#EEF0F2',
                     strokeDashArray: 0,
-                    opacity: 0.5,
                     position: 'back',
                     xaxis: { lines: { show: false } },
                     yaxis: { lines: { show: true } },
-                    padding: { top: 0, right: 10, bottom: 0, left: 10 }
+                    padding: { top: 0, right: 0, bottom: 0, left: 10 }
                 },
                 legend: {
-                    show: false
+                    show: true,
+                    position: 'top',
+                    horizontalAlign: 'left',
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    markers: {
+                        width: 8,
+                        height: 8,
+                        radius: 12,
+                        offsetY: 0
+                    },
+                    itemMargin: {
+                        horizontal: 10,
+                        vertical: 0
+                    },
+                    onItemClick: {
+                        toggleDataSeries: true
+                    },
+                    onItemHover: {
+                        highlightDataSeries: true
+                    }
                 },
                 tooltip: {
                     enabled: true,
