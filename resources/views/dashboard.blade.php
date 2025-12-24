@@ -16,8 +16,6 @@
         @media (max-width: 768px) {
             .main-content { padding-left: 0 !important; padding-bottom: 80px; }
         }
-        
-        /* Premium Flatpickr Styling */
         .flatpickr-calendar {
             background: #ffffff;
             box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
@@ -52,19 +50,15 @@
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased">
+<body class="text-slate-800 antialiased overflow-x-hidden">
 
-    <!-- Component 1: Sidebar -->
     <x-sidebar />
 
     <main class="main-content pl-20 transition-all duration-300 bg-[#F9FEFF]">
         <div class="max-w-[1600px] mx-auto px-4 pb-4 md:px-8 md:pb-8">
             
-            <!-- Component 2: Header -->
             <x-header />
 
-
-            <!-- Component 4: KPI Cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <x-kpi-card title="Patients Ready" value="42" subtext="31 discharges pending" color="green" icon="<img src='{{ asset('images/tick.svg') }}'>" />
                 <x-kpi-card title="Pending Disclosures" value="8" subtext="Awaiting Review" color="orange" icon="<img src='{{ asset('images/pending.svg') }}'>" />
@@ -72,14 +66,11 @@
                 <x-kpi-card title="Low Inventory Alerts" value="3" subtext="Critical Items Low" color="red" icon="<img src='{{ asset('images/red_alert.svg') }}'>" />
             </div>
 
-            <!-- Component 5: Analytics Section -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <!-- Patient Flow -->
                 <x-analytics-card title="Patient Flow">
                     <div id="patient-flow-chart" class="min-h-[160px] w-full"></div>
                 </x-analytics-card>
 
-                <!-- Task Distribution -->
                 <x-analytics-card title="Task Status Distribution">
                     <div class="flex flex-col h-full">
                         <div class="flex justify-center items-center py-2">
@@ -111,13 +102,10 @@
                     </div>
                 </x-analytics-card>
 
-                <!-- Inventory Trend -->
                 <x-analytics-card title="Inventory Usage Trend">
                     <div id="inventory-usage-chart" class="min-h-[160px] w-full"></div>
                 </x-analytics-card>
 
-                <!-- Sales -->
-                <!-- Sales -->
                 <x-analytics-card title="Sales Performance">
                     <div class="flex flex-col h-full justify-between">
                         <div id="sales-performance-chart" class="min-h-[160px] w-full"></div>
@@ -133,17 +121,15 @@
                 </x-analytics-card>
             </div>
 
-            <!-- Action Tracker -->
             <div class="mb-8">
                 <x-action-table />
             </div>
         </div>
     </main>
 
-    <!-- Mobile Quick Actions Bar -->
     <div class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-slate-100 p-4 flex justify-around items-center md:hidden z-50">
         <button class="text-slate-400 flex flex-col items-center gap-1"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span class="text-[4px] font-bold">SEARCH</span></button>
-        <button class="-mt-10 w-14 h-14 bg-slate-900 text-white rounded-full shadow-lg flex items-center justify-center border-4 border-white"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+        <button onclick="toggleSidebar()" class="-mt-10 w-14 h-14 bg-slate-900 text-white rounded-full shadow-lg flex items-center justify-center border-4 border-white active:scale-95 transition-transform"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
         <button class="text-slate-400 flex flex-col items-center gap-1"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="text-[4px] font-bold">PROFILE</span></button>
     </div>
 
@@ -261,7 +247,6 @@
             var chart = new ApexCharts(document.querySelector("#patient-flow-chart"), options);
             chart.render();
 
-            // Task Status Donut Chart
             var taskOptions = {
                 series: [60, 20, 20],
                 chart: {
@@ -322,7 +307,6 @@
             var taskChart = new ApexCharts(document.querySelector("#task-status-chart"), taskOptions);
             taskChart.render();
 
-            // Inventory Usage Trend Bar Chart
             var inventoryOptions = {
                 series: [{
                     name: 'Primary Usage',
@@ -412,8 +396,6 @@
             var inventoryChart = new ApexCharts(document.querySelector("#inventory-usage-chart"), inventoryOptions);
             inventoryChart.render();
 
-            // Sales Health Area Chart
-            // Sales Performance Combo Chart
             var salesOptions = {
                 series: [{
                     name: 'Background',
