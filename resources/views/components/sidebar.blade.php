@@ -1,4 +1,4 @@
-<aside class="fixed inset-y-0 left-0 w-20 bg-white border-r border-slate-100 flex flex-col items-center py-6 z-50">
+<aside class="fixed inset-y-0 left-0 w-20 bg-white border-r border-slate-100 hidden md:flex flex-col items-center py-6 z-50">
     <!-- Logo -->
     <div class="mb-10 px-4">
         <img src="{{ asset('images/logo.png') }}" alt="HSL Labs Logo" class="w-10 h-10 object-contain">

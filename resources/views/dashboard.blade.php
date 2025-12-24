@@ -44,6 +44,12 @@
             color: #94a3b8;
             font-weight: 600;
         }
+        @media (max-width: 640px) {
+            .flatpickr-calendar {
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+            }
+        }
     </style>
 </head>
 <body class="text-slate-800 antialiased">
