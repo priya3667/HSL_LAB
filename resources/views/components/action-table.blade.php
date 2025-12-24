@@ -1,13 +1,13 @@
-<div class="w-full bg-white rounded-[12px] border border-[#E8E7E7] shadow-sm flex flex-col items-center justify-center py-[30px] px-[16px] font-sans">
+<div class="w-full bg-white rounded-[12px] border border-[#E8E7E7] shadow-[0px_4px_4px_0px_#00000040] flex flex-col items-center justify-center py-4 md:py-[30px] px-2 md:px-[16px] font-sans">
 
     <div class="w-full max-w-[1468px] h-auto flex flex-col gap-[15.21px]">
 
-        <div class="flex flex-col md:flex-row items-center justify-between pb-1 gap-4 px-6">
-            <h2 class="font-inter font-semibold text-[20px] leading-[100%] text-[#45464E]">Action Tracker Table</h2>
+        <div class="flex flex-col lg:flex-row items-center justify-between pb-1 gap-4 px-2 md:px-6">
+            <h2 class="font-inter font-semibold text-[16px] md:text-[20px] leading-[100%] text-[#45464E] self-start lg:self-auto">Action Tracker Table</h2>
             
-            <div class="flex items-center gap-[7.6px] w-full md:w-auto">
+            <div class="flex items-center flex-wrap gap-[7.6px] w-full lg:w-auto pb-2 lg:pb-0">
 
-                <div class="relative w-[133.85px] h-[22.05px]">
+                <div class="relative min-w-[133.85px] h-[22.05px] flex-shrink-0">
                     <div class="absolute inset-y-0 left-[6.08px] flex items-center pointer-events-none">
                         <svg class="h-3 w-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </div>
@@ -15,12 +15,12 @@
                 </div>
                 
 
-                <div class="flex items-center gap-[9.13px]">
+                <div class="flex items-center gap-[9.13px] flex-nowrap">
 
                     <div class="relative" id="filter-container">
-                        <button id="filter-button" class="flex items-center gap-[7.6px] h-[22.05px] px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors" title="Filter">
-                            <img src="{{ asset('images/Filter.svg') }}" alt="Filter" class="w-3 h-3">
-                            <span class="text-[10px] font-medium leading-[100%] text-[#53545C]">Filter</span>
+                        <button id="filter-button" class="flex items-center justify-center gap-[7.6px] h-[22.05px] px-[8.08px] md:px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors flex-shrink-0" title="Filter">
+                            <img src="{{ asset('images/Filter.svg') }}" alt="Filter" class="w-3.5 h-3.5 md:w-3 md:h-3">
+                            <span class="text-[10px] font-medium leading-[100%] text-[#53545C] hidden md:inline">Filter</span>
                         </button>
                         <!-- Filter Dropdown -->
                         <div id="filter-dropdown" class="hidden absolute top-full mt-2 left-0 w-36 bg-white border border-slate-200 rounded-lg shadow-lg z-20 py-1">
@@ -45,21 +45,21 @@
                     </div>
 
 
-                    <button id="date_filter_trigger" class="flex items-center gap-[7.6px] h-[22.05px] px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors" title="Date">
-                        <img src="{{ asset('images/solar_calendar-outline.svg') }}" alt="Date" class="w-3 h-3">
-                        <span class="text-[10px] font-medium leading-[100%] text-[#53545C]">Date</span>
+                    <button id="date_filter_trigger" class="flex items-center justify-center gap-[7.6px] h-[22.05px] px-[8.08px] md:px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors flex-shrink-0" title="Date">
+                        <img src="{{ asset('images/solar_calendar-outline.svg') }}" alt="Date" class="w-3.5 h-3.5 md:w-3 md:h-3">
+                        <span class="text-[10px] font-medium leading-[100%] text-[#53545C] hidden md:inline">Date</span>
                     </button>
 
 
-                    <button class="flex items-center gap-[7.6px] h-[22.05px] px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors" title="Share">
-                         <img src="{{ asset('images/Send.svg') }}" alt="Share" class="w-3 h-3">
-                        <span class="text-[10px] font-medium leading-[100%] text-[#53545C]">Share</span>
+                    <button class="flex items-center justify-center gap-[7.6px] h-[22.05px] px-[8.08px] md:px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors flex-shrink-0" title="Share">
+                         <img src="{{ asset('images/Send.svg') }}" alt="Share" class="w-3.5 h-3.5 md:w-3 md:h-3">
+                        <span class="text-[10px] font-medium leading-[100%] text-[#53545C] hidden md:inline">Share</span>
                     </button>
                     
 
                     <div class="relative" id="bulk-action-container">
-                        <button id="bulk-action-button" class="flex items-center gap-[7.6px] h-[22.05px] px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors" title="Bulk">
-                            <span class="text-[10px] font-medium leading-[100%] text-[#53545C]">Bulk Action</span>
+                        <button id="bulk-action-button" class="flex items-center justify-center gap-[7.6px] h-[22.05px] px-[8.08px] md:px-[6.08px] border-[0.76px] border-[#53545C] rounded-[20px] hover:bg-slate-50 text-slate-600 transition-colors flex-shrink-0" title="Bulk">
+                            <span class="text-[10px] font-medium leading-[100%] text-[#53545C] hidden md:inline">Bulk Action</span>
                             <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
                         </button>
                         <!-- Bulk Dropdown -->
@@ -227,10 +227,10 @@
     </div>
 
     <!-- Edit Modal -->
-    <div id="edit-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center backdrop-blur-sm">
-        <div class="bg-white rounded-[16px] shadow-2xl w-full max-w-lg mx-4 overflow-hidden transform transition-all scale-100 ring-1 ring-black/5">
-            <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
-                <h3 class="text-base font-semibold text-gray-800">Edit Row Details</h3>
+    <div id="edit-modal" class="fixed inset-0 bg-black/60 z-[9999] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-[16px] shadow-2xl w-[95%] max-w-[500px] overflow-hidden transform transition-all">
+            <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-white">
+                <h3 class="text-[18px] font-semibold text-[#303030]">Edit Entry</h3>
                 <button id="close-modal" class="text-gray-400 hover:text-gray-600 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
@@ -238,25 +238,25 @@
             
             <div class="p-6 space-y-4">
                 <div class="space-y-1">
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide">Task Name</label>
-                    <input type="text" id="edit-task" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-700">
+                    <label class="block text-[12px] font-bold text-gray-500 uppercase tracking-wide">Task Name</label>
+                    <input type="text" id="edit-task" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-slate-400 transition-all text-gray-800">
                 </div>
                 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="space-y-1">
-                        <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide">Category</label>
-                        <input type="text" id="edit-cat" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-700">
+                        <label class="block text-[12px] font-bold text-gray-500 uppercase tracking-wide">Category</label>
+                        <input type="text" id="edit-cat" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-slate-400 transition-all text-gray-800">
                     </div>
                     <div class="space-y-1">
-                        <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide">Patient</label>
-                        <input type="text" id="edit-pat" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-700">
+                        <label class="block text-[12px] font-bold text-gray-500 uppercase tracking-wide">Patient/Ref</label>
+                        <input type="text" id="edit-pat" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-slate-400 transition-all text-gray-800">
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <div class="space-y-1">
-                        <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide">Priority</label>
-                         <select id="edit-prio" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-700 appearance-none">
+                        <label class="block text-[12px] font-bold text-gray-500 uppercase tracking-wide">Priority</label>
+                         <select id="edit-prio" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-slate-400 transition-all text-gray-800 appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke%3D%22currentColor%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%222%22%20d%3D%22M19%209l-7%207-7-7%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.25em_1.25em] bg-[right_0.75rem_center] bg-no-repeat">
                             <option>High</option>
                             <option>Medium</option>
                             <option>Low</option>
@@ -265,53 +265,52 @@
                         </select>
                     </div>
                     <div class="space-y-1">
-                        <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide">Assigned To</label>
-                        <input type="text" id="edit-assign" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-700">
+                        <label class="block text-[12px] font-bold text-gray-500 uppercase tracking-wider">Assigned To</label>
+                        <input type="text" id="edit-assign" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-slate-400 transition-all text-gray-800">
                     </div>
                 </div>
             </div>
 
-            <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-end gap-3">
-                <button id="cancel-edit" class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">Cancel</button>
-                <button id="save-edit" class="px-4 py-2 text-sm font-medium text-white bg-[#45464E] hover:bg-[#2C2D33] rounded-lg shadow-sm transition-all transform active:scale-95">Save Changes</button>
+            <div class="px-6 py-4 bg-gray-50 flex justify-end gap-3">
+                <button id="cancel-edit" class="px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">Cancel</button>
+                <button id="save-edit" class="px-6 py-2 text-sm font-semibold text-white bg-[#45464E] hover:bg-black rounded-lg transition-all shadow-sm">Save Changes</button>
             </div>
         </div>
     </div>
-    </div>
 
     <!-- Message Modal -->
-    <div id="message-modal" class="fixed inset-0 bg-black/50 z-[60] hidden flex items-center justify-center backdrop-blur-sm">
-        <div class="bg-white rounded-[16px] shadow-2xl w-full max-w-sm mx-4 overflow-hidden transform transition-all scale-100 ring-1 ring-black/5">
-            <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
-                <h3 class="text-base font-semibold text-gray-800">Notice</h3>
-                <button id="close-message-modal" class="text-gray-400 hover:text-gray-600 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    <div id="message-modal" class="fixed inset-0 bg-black/60 z-[9999] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-[16px] shadow-2xl w-[90%] max-w-[400px] overflow-hidden transform transition-all">
+            <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                <h3 class="text-[18px] font-semibold text-[#303030]">Notice</h3>
+                <button id="close-message-modal" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
             </div>
-            <div class="p-6">
-                <p class="text-sm text-gray-600" id="message-text"></p>
+            <div class="px-6 py-10">
+                <p class="text-[15px] text-[#6A6969] font-medium leading-relaxed" id="message-text"></p>
             </div>
-            <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-end">
-                <button id="message-ok-btn" class="px-4 py-2 text-sm font-medium text-white bg-[#45464E] hover:bg-[#2C2D33] rounded-lg shadow-sm transition-all transform active:scale-95">OK</button>
+            <div class="px-6 py-4 flex justify-end">
+                <button id="message-ok-btn" class="px-10 py-2 bg-[#45464E] text-white rounded-[8px] font-bold text-[14px] hover:bg-black transition-all">OK</button>
             </div>
         </div>
     </div>
 
     <!-- Confirm Modal -->
-    <div id="confirm-modal" class="fixed inset-0 bg-black/50 z-[60] hidden flex items-center justify-center backdrop-blur-sm">
-        <div class="bg-white rounded-[16px] shadow-2xl w-full max-w-sm mx-4 overflow-hidden transform transition-all scale-100 ring-1 ring-black/5">
-            <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
-                <h3 class="text-base font-semibold text-gray-800">Confirm Action</h3>
-                <button id="close-confirm-modal" class="text-gray-400 hover:text-gray-600 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    <div id="confirm-modal" class="fixed inset-0 bg-black/60 z-[9999] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-[16px] shadow-2xl w-[90%] max-w-[400px] overflow-hidden transform transition-all">
+            <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                <h3 class="text-[18px] font-semibold text-[#303030]">Confirm Action</h3>
+                <button id="close-confirm-modal" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
             </div>
-            <div class="p-6">
-                <p class="text-sm text-gray-600" id="confirm-text"></p>
+            <div class="px-6 py-10">
+                <p class="text-[15px] text-[#6A6969] font-medium leading-relaxed" id="confirm-text"></p>
             </div>
-            <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-end gap-3">
-                <button id="confirm-cancel-btn" class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">Cancel</button>
-                <button id="confirm-yes-btn" class="px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg shadow-sm transition-all transform active:scale-95">Delete</button>
+            <div class="px-6 py-4 flex justify-end gap-3 bg-gray-50">
+                <button id="confirm-cancel-btn" class="px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">Cancel</button>
+                <button id="confirm-yes-btn" class="px-6 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg shadow-sm transition-all active:scale-95">Confirm</button>
             </div>
         </div>
     </div>
@@ -325,7 +324,8 @@
         flatpickr("#date_filter_trigger", {
             dateFormat: "Y-m-d",
             allowInput: true,
-            disableMobile: "true"
+            disableMobile: true,
+            position: "below center"
         });
     });
 
