@@ -293,7 +293,24 @@
             dateFormat: "Y-m-d",
             allowInput: true,
             disableMobile: true,
-            position: "below center"
+            position: "below",
+            onOpen: function(selectedDates, dateStr, instance) {
+                setTimeout(() => {
+                    const calendar = instance.calendarContainer;
+                    if (!calendar) return;
+                    
+                    const input = instance.element;
+                    const rect = input.getBoundingClientRect();
+                    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                    const zoomFactor = 0.8; // Hardcoded zoom from global CSS
+                    
+                    // Manually force top position correcting for zoom
+                    const topPos = (rect.bottom + scrollTop) / zoomFactor;
+                    
+                    calendar.style.top = `${topPos + 5}px`;
+                    calendar.style.bottom = 'auto'; // Prevent flipping to top
+                }, 0);
+            }
         });
     });
     document.addEventListener("DOMContentLoaded", function() {
