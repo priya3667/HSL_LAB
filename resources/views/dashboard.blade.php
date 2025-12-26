@@ -58,6 +58,7 @@
             fill: #1e293b !important; /* Slate 800 */
             font-size: 12px;
         }
+        }
     </style>
 </head>
 <body class="text-slate-800 antialiased overflow-x-hidden">
@@ -77,15 +78,16 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <x-analytics-card title="Patient Flow">
-                    <div id="patient-flow-chart" class="min-h-[210px] w-full"></div>
-                    <div class="flex justify-between items-center px-1 mt-1">
-                        <div class="flex flex-row gap-14">
-                            <span class="text-[12px] font-bold text-slate-900">Max</span>
-                            <span class="text-[14px] font-bold text-slate-800">253</span>
-                        
-                            <span class="text-[12px] font-bold text-slate-900">Today</span>
-                            <span class="text-[14px] font-bold text-slate-800">112</span>
+                <x-analytics-card title="Patient Flow" height="h-[340px]">
+                    <div id="patient-flow-chart" class="min-h-[220px] w-full -mt-2"></div>
+                    <div class="flex justify-between items-center px-4 -mt-6 w-full">
+                        <div class="flex items-center justify-between w-[45%] gap-2">
+                            <span class="text-[12px] font-bold text-slate-800 whitespace-nowrap">Max</span>
+                            <span class="text-[12px] font-bold text-slate-800 whitespace-nowrap">253</span>
+                        </div>
+                        <div class="flex items-center justify-between w-[45%] gap-2">
+                            <span class="text-[12px] font-bold text-slate-800 whitespace-nowrap">Today</span>
+                            <span class="text-[12px] font-bold text-slate-800 whitespace-nowrap">112</span>
                         </div>
                     </div>
                 </x-analytics-card>
@@ -96,55 +98,70 @@
                             <div class="relative w-[155px] h-[151px]">
                                 <div id="task-status-chart" style="width: 155px; height: 151px;"></div>
                                 <!-- Custom Data Labels -->
-                                <div class="absolute top-[18px] left-[8px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-lg z-10 border-2 border-white">
-                                    <span class="text-[11px] font-extrabold text-[#000000]">20%</span>
+                                <!-- Pending (Pink 20%) - Top Left -->
+                                <div class="absolute top-[6px] left-[4px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.15)] z-10 border-2 border-white">
+                                    <span class="text-[11px] font-extrabold text-slate-800">20%</span>
                                 </div>
-                                <div class="absolute top-[18px] right-[8px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-lg z-10 border-2 border-white">
-                                    <span class="text-[11px] font-extrabold text-[#000000]">20%</span>
+                                <!-- Inprogress (Brown 20%) - Top Right -->
+                                <div class="absolute top-[6px] right-[4px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.15)] z-10 border-2 border-white">
+                                    <span class="text-[11px] font-extrabold text-slate-800">20%</span>
                                 </div>
-                                <div class="absolute bottom-[8px] left-1/2 -translate-x-1/2 w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-lg z-10 border-2 border-white">
-                                    <span class="text-[11px] font-extrabold text-[#000000]">60%</span>
+                                <!-- Completed (Green 60%) - Bottom -->
+                                <div class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.15)] z-10 border-2 border-white">
+                                    <span class="text-[11px] font-extrabold text-slate-800">60%</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-auto px-4 pb-2">
-                            <div class="flex items-center justify-between text-[12px]">
+                        <div class="mt-auto px-2 pb-1 w-full max-w-[190px] mx-auto">
+                            <div class="flex items-center justify-between text-[13px]">
                                 <div class="flex items-center gap-2">
-                                    <div class="w-2.5 h-2.5 rounded-full bg-[#A8BBA3]"></div>
-                                    <span class="font-semibold text-slate-600">Completed</span>
+                                    <div class="w-3 h-3 rounded-full bg-[#A8BBA3]"></div>
+                                    <span class="font-bold text-slate-600">Completed</span>
                                 </div>
-                                <span class="font-bold text-slate-800">60%</span>
+                                <span class="font-extrabold text-slate-800">60%</span>
                             </div>
-                            <div class="flex items-center justify-between text-[12px]">
+                            <div class="flex items-center justify-between text-[13px]">
                                 <div class="flex items-center gap-2">
-                                    <div class="w-2.5 h-2.5 rounded-full bg-[#B87C4C]"></div>
-                                    <span class="font-semibold text-slate-600">Inprogress</span>
+                                    <div class="w-3 h-3 rounded-full bg-[#B87C4C]"></div>
+                                    <span class="font-bold text-slate-600">Inprogress</span>
                                 </div>
-                                <span class="font-bold text-slate-800">20%</span>
+                                <span class="font-extrabold text-slate-800">20%</span>
                             </div>
-                            <div class="flex items-center justify-between text-[12px]">
+                            <div class="flex items-center justify-between text-[13px]">
                                 <div class="flex items-center gap-2">
-                                    <div class="w-2.5 h-2.5 rounded-full bg-[#EBD9D1]"></div>
-                                    <span class="font-semibold text-slate-600">Pending</span>
+                                    <div class="w-3 h-3 rounded-full bg-[#EBD9D1]"></div>
+                                    <span class="font-bold text-slate-600">Pending</span>
                                 </div>
-                                <span class="font-bold text-slate-800">20%</span>
+                                <span class="font-extrabold text-slate-800">20%</span>
                             </div>
                         </div>
                     </div>
                 </x-analytics-card>
 
                 <x-analytics-card title="Inventory Usage Trend">
+                    <div class="flex items-center gap-6 px-1 mb-2">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#B87C4C]"></div>
+                            <span class="text-[12px] font-bold text-[#94a3b8]">Used Today</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#EBD9D1]"></div>
+                            <span class="text-[12px] font-bold text-[#94a3b8]">Used Yesterday</span>
+                        </div>
+                    </div>
                     <div id="inventory-usage-chart" class="min-h-[160px] w-full"></div>
                 </x-analytics-card>
 
                 <x-analytics-card title="Sales Performance">
                     <div class="flex flex-col h-full bg-white">
-                        <div id="sales-performance-chart" class="w-full" style="height: 150px; margin-top: -5px;"></div>
+                        <div class="relative w-full h-[200px] mt-[-5px] group">
+                            <div id="sales-performance-chart" class="w-full h-full"></div>
+                        </div>
                         <div class="px-3 pb-4">
-                            <div class="flex items-center gap-5">
-                                <span class="text-[32px] font-bold text-slate-800 leading-none">30%</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="font-['Inter'] font-bold text-[20.07px] text-[#2E2E30] leading-none">30%</span>
                                 <div class="flex flex-col">
-                                    <p class="text-[12px] text-slate-500 font-medium leading-[1.3]">
+                                    <p class="font-['Inter'] font-normal text-[12.04px] text-[#767676] leading-none">
                                         Your sales performance is 30%<br>better compare to last month
                                     </p>
                                 </div>
@@ -176,7 +193,7 @@
                 }],
                 chart: {
                     type: 'area',
-                    height: 210,
+                    height: 220,
                     toolbar: { show: false },
                     zoom: { enabled: false },
                     sparkline: { enabled: false },
@@ -295,7 +312,7 @@
             chart.render();
 
             var taskOptions = {
-                series: [60, 20, 20],
+                series: [20, 60, 20],
                 chart: {
                     type: 'donut',
                     height: 151,
@@ -304,8 +321,8 @@
                     sparkline: { enabled: false },
                     fontFamily: 'Plus Jakarta Sans, sans-serif'
                 },
-                labels: ['Completed', 'Pending', 'Inprogress'],
-                colors: ['#A8BBA3', '#EBD9D1', '#B87C4C'],
+                labels: ['Inprogress', 'Completed', 'Pending'],
+                colors: ['#B87C4C', '#A8BBA3', '#EBD9D1'],
                 stroke: { width: 0 },
                 states: {
                     hover: { filter: { type: 'none' } },
@@ -316,33 +333,33 @@
                 },
                 plotOptions: {
                     pie: {
-                        startAngle: 72,
+                        startAngle: 0,
                         expandOnClick: false,
                         donut: {
-                            size: '50%',
+                            size: '55%',
                             labels: {
                                 show: true,
                                 name: {
                                     show: true,
-                                    fontSize: '14px',
+                                    fontSize: '12px',
                                     fontWeight: 700,
-                                    color: '#000000',
-                                    offsetY: 18
+                                    color: '#64748b',
+                                    offsetY: 20
                                 },
                                 value: {
                                     show: true,
-                                    fontSize: '24px',
+                                    fontSize: '22px',
                                     fontWeight: 800,
-                                    color: '#000000',
-                                    offsetY: -12,
+                                    color: '#1e293b',
+                                    offsetY: -10,
                                     formatter: function (val) { return '156' }
                                 },
                                 total: {
                                     show: true,
                                     showAlways: true,
                                     label: 'Total',
-                                    color: '#000000',
-                                    fontSize: '14px',
+                                    color: '#0f172a',
+                                    fontSize: '12px',
                                     fontWeight: 700,
                                     formatter: function (w) { return '156' }
                                 }
@@ -427,28 +444,10 @@
                     position: 'back',
                     xaxis: { lines: { show: false } },
                     yaxis: { lines: { show: true } },
-                    padding: { top: 0, right: 0, bottom: 0, left: 10 }
+                    padding: { top: 0, right: 0, bottom: 30, left: 10 }
                 },
                 legend: {
-                    show: true,
-                    position: 'top',
-                    horizontalAlign: 'left',
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    labels: {
-                        colors: '#94a3b8'
-                    },
-                    markers: {
-                        width: 0,
-                        height: 0,
-                        radius: 2,
-                        offsetX: -4,
-                        offsetY: 2
-                    },
-                    itemMargin: {
-                        horizontal: 10,
-                        vertical: 0
-                    }
+                    show: false
                 },
                 tooltip: {
                     enabled: true,
@@ -467,9 +466,13 @@
 
             var salesOptions = {
                 series: [{
-                    name: 'Background',
+                    name: 'Background Standard',
                     type: 'bar',
-                    data: [100, 100, 100, 100, 100, 100, 100]
+                    data: [100, 100, 100, 100, 100, 0, 100] // All except Jun
+                }, {
+                    name: 'Highlight Solid',
+                    type: 'bar',
+                    data: [0, 0, 0, 0, 0, 100, 0] // Jun only
                 }, {
                     name: 'Performance',
                     type: 'line',
@@ -477,7 +480,8 @@
                 }],
                 chart: {
                     type: 'line',
-                    height: 150,
+                    height: 200,
+                    stacked: true,
                     toolbar: { show: false },
                     fontFamily: 'Plus Jakarta Sans, sans-serif',
                     zoom: { enabled: false },
@@ -485,85 +489,74 @@
                 },
                 plotOptions: {
                     bar: {
-                        columnWidth: '95%',
-                        borderRadius: 4,
-                        colors: {
-                            ranges: [{
-                                from: 0,
-                                to: 100,
-                                color: '#F9F9F9'
-                            }]
-                        }
+                        columnWidth: '94%',
+                        borderRadius: 3,
+                        borderRadiusApplication: 'end'
                     }
                 },
                 stroke: {
                     curve: 'smooth',
-                    width: [0, 3]
+                    width: [0, 0, 2],
+                    colors: ['transparent', 'transparent', '#B87C4C']
                 },
-                colors: ['#F9F9F9', '#B87C4C'], 
+                fill: {
+                    type: ['solid', 'solid', 'solid'],
+                    opacity: [1, 1, 1]
+                },
+                colors: ['#fbf7f4', '#f2e4db', '#B87C4C'], 
                 xaxis: {
                     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
                     labels: {
                         show: true,
                         style: {
-                            colors: ['#767676', '#767676', '#767676', '#767676', '#767676', '#767676', '#B87C4C'],
-                            fontSize: '11px',
-                            fontWeight: 600
+                            colors: ['#2E2E30', '#2E2E30', '#2E2E30', '#2E2E30', '#2E2E30', '#2E2E30', '#B87C4C'],
+                            fontSize: '10.03px',
+                            fontWeight: 400,
+                            fontFamily: 'Inter, sans-serif'
                         },
                         formatter: function(val) {
                             if (['Jan', 'Mar', 'May', 'Jul'].includes(val)) return val;
                             return '';
                         },
                         rotate: 0,
-                        offsetY: 0
+                        offsetY: -5
                     },
                     axisBorder: { show: false },
-                    axisTicks: { show: false }
+                    axisTicks: { show: false },
+                    tooltip: { enabled: false } // R1: Disable X-axis tooltip
                 },
                 yaxis: {
                     show: false,
-                    max: 110,
+                    max: 100,
                     min: 0
                 },
                 grid: {
                     show: false,
-                    padding: { top: 0, bottom: 0, left: 15, right: 15 }
-                },
-                legend: {
-                    show: false
-                },
-                tooltip: {
-                    enabled: false
-                },
-                markers: {
-                    size: 0,
-                    hover: { size: 0 }
+                    padding: { top: 0, bottom: 0, left: -12, right: -12 }
                 },
                 states: {
                     hover: { filter: { type: 'none' } },
                     active: { filter: { type: 'none' } }
                 },
-                annotations: {
-                    points: [{
-                        x: 'May',
-                        y: 45,
-                        label: {
-                            borderColor: '#E8E7E7',
-                            borderRadius: 15,
-                            borderWidth: 1,
-                            text: '4500: Low sales in May',
-                            style: {
-                                color: '#767676',
-                                background: '#fff',
-                                fontSize: '11px',
-                                fontWeight: 700,
-                                padding: { left: 12, right: 12, top: 6, bottom: 6 }
-                            },
-                            offsetY: -35
-                        },
-                        marker: { size: 0 }
-                    }]
-                }
+                legend: { show: false },
+                tooltip: { 
+                    enabled: true,
+                    shared: false,   // R2: Ensure only one tooltip renders per hover event (priority to custom)
+                    intersect: false, // Allow hovering anywhere in the column
+                    custom: function({series, seriesIndex, dataPointIndex, w}) {
+                        // Always grab data from the Performance series (Index 2)
+                        var value = w.config.series[2].data[dataPointIndex] * 100;
+                        // Define months locally to ensure correct mapping
+                        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+                        var month = months[dataPointIndex];
+                        return '<div class="bg-white border border-slate-100 rounded-xl shadow-[0_4px_10px_rgba(0,0,0,0.08)] px-3 py-1.5 flex items-center gap-1 whitespace-nowrap">' +
+                            '<span class="text-[#B87C4C] font-bold text-[12px] font-[\'Plus_Jakarta_Sans\']">' + value + ':</span>' +
+                            '<span class="text-slate-400 font-bold text-[11px] ml-0.5 font-[\'Plus_Jakarta_Sans\']">Low sales in ' + month + '</span>' +
+                            '</div>';
+                    }
+                },
+                markers: { size: 0, hover: { size: 4, colors: ['#fff'], strokeColors: '#B87C4C', strokeWidth: 2 } },
+                dataLabels: { enabled: false }
             };
 
             var salesChart = new ApexCharts(document.querySelector("#sales-performance-chart"), salesOptions);
