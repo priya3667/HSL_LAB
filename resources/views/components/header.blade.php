@@ -37,8 +37,8 @@
             });
         </script>
 
-        <div class="relative p-2 text-slate-400 hidden sm:block">
-            <img src="{{ asset('images/Notification.svg') }}" alt="Notification">
+        <div class="relative p-1.5 text-slate-400 hidden sm:block">
+            <img src="{{ asset('images/Notification.svg') }}" alt="Notification" class="w-8 h-8">
         </div>
 
         <div class="flex items-center gap-2 md:gap-3 pl-1 md:pl-2">

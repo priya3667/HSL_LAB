@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Mulish:wght@500;600;700;800&family=Inter:wght@400;600&family=Instrument+Sans:wght@500&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; zoom: 80%; }
         .sidebar-item-active { background-color: #f1f5f9; color: #1e293b; border-radius: 12px; }
         .custom-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
         @media (max-width: 768px) {
@@ -77,8 +77,8 @@
                 <x-kpi-card title="Low Inventory Alerts" value="3" subtext="Critical Items Low" color="red" icon="<img src='{{ asset('images/red_alert.svg') }}'>" />
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <x-analytics-card title="Patient Flow" height="h-[340px]">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(24,minmax(0,1fr))] gap-6 mb-8">
+                <x-analytics-card title="Patient Flow" height="h-[340px]" class="lg:col-span-7">
                     <div id="patient-flow-chart" class="min-h-[220px] w-full -mt-2"></div>
                     <div class="flex justify-between items-center px-4 -mt-6 w-full">
                         <div class="flex items-center justify-between w-[45%] gap-2">
@@ -92,7 +92,7 @@
                     </div>
                 </x-analytics-card>
 
-                <x-analytics-card title="Task Status Distribution">
+                <x-analytics-card title="Task Status Distribution" class="lg:col-span-5">
                     <div class="flex flex-col h-full">
                         <div class="flex justify-center items-center py-2">
                             <div class="relative w-[155px] h-[151px]">
@@ -138,7 +138,7 @@
                     </div>
                 </x-analytics-card>
 
-                <x-analytics-card title="Inventory Usage Trend">
+                <x-analytics-card title="Inventory Usage Trend" class="lg:col-span-6">
                     <div class="flex items-center gap-6 px-1 mb-2">
                         <div class="flex items-center gap-2">
                             <div class="w-2.5 h-2.5 rounded-full bg-[#B87C4C]"></div>
@@ -152,7 +152,7 @@
                     <div id="inventory-usage-chart" class="min-h-[160px] w-full"></div>
                 </x-analytics-card>
 
-                <x-analytics-card title="Sales Performance">
+                <x-analytics-card title="Sales Performance" class="lg:col-span-6">
                     <div class="flex flex-col h-full bg-white">
                         <div class="relative w-full h-[200px] mt-[-5px] group">
                             <div id="sales-performance-chart" class="w-full h-full"></div>
