@@ -22,17 +22,16 @@ A premium, high-fidelity operations dashboard for laboratory management, built w
 - **Charts**: ApexCharts.js
 - **Date Picker**: Flatpickr.js
 - **Build Tool**: Vite 7.0
-- **Fonts**: Google Fonts (Plus Jakarta Sans, Mulish, Inter, Instrument Sans)
 
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed on your system:
 
 - **PHP** >= 8.2 ([Download PHP](https://www.php.net/downloads))
+  - Once downloaded, extract the files to a directory of your choice, and then set the Environment Variable PATH to the directory where the PHP executable is located.
 - **Composer** ([Download Composer](https://getcomposer.org/download/))
+  - Once downloaded, run the composer and install.
 - **Node.js** >= 18.x and npm ([Download Node.js](https://nodejs.org/))
-- **Git** ([Download Git](https://git-scm.com/downloads))
-
 ### Verify Installation
 
 ```bash
@@ -40,7 +39,6 @@ php --version
 composer --version
 node --version
 npm --version
-git --version
 ```
 
 ## 💻 Installation & Setup
@@ -56,11 +54,18 @@ cd HSL_LAB
 
 ### 2. Install PHP Dependencies
 
+- 1st run the command php --ini
+- Find the path of the php.ini file
+- Search for the line extension=fileinfo and remove the semicolon in front of it.
+- Save it.
+- Restart the powershell.
+
 ```bash
 composer install
 ```
 
-This will install all Laravel and PHP dependencies defined in `composer.json`.
+Note: This will take some time around 5-10 mins.
+And will install all Laravel and PHP dependencies defined in `composer.json`.
 
 ### 3. Install Node.js Dependencies
 
@@ -127,7 +132,11 @@ New-Item -Path database\database.sqlite -ItemType File
 touch database/database.sqlite
 ```
 
-### 7. Run Database Migrations
+### 7. Go to php.ini file and remove the prefix semicolon from these two:
+ - ;extension=pdo_sqlite  <-- Remove the ;
+ - ;extension=sqlite3     <-- Remove the ;
+
+### 8. Run Database Migrations
 
 ```bash
 php artisan migrate
@@ -135,7 +144,7 @@ php artisan migrate
 
 This will create all necessary database tables.
 
-### 8. Create Storage Link (Optional)
+### 9. Create Storage Link (Optional)
 
 If you plan to use file uploads:
 
@@ -143,7 +152,7 @@ If you plan to use file uploads:
 php artisan storage:link
 ```
 
-### 9. Start the Development Servers
+### 10. Start the Development Servers
 
 You need to run **two separate commands** in **two different terminal windows**:
 
@@ -235,18 +244,3 @@ npm run build
 ```
 
 This will create optimized production assets in the `public/build` directory.
-
-### Clearing Cache
-
-```bash
-php artisan cache:clear
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
-```
-
-### Running Tests
-
-```bash
-php artisan test
-```
