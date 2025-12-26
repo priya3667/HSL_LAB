@@ -302,13 +302,12 @@
                     const input = instance.element;
                     const rect = input.getBoundingClientRect();
                     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-                    const zoomFactor = 0.8; // Hardcoded zoom from global CSS
+                    const zoomFactor = 0.8;
                     
-                    // Manually force top position correcting for zoom
                     const topPos = (rect.bottom + scrollTop) / zoomFactor;
                     
                     calendar.style.top = `${topPos + 5}px`;
-                    calendar.style.bottom = 'auto'; // Prevent flipping to top
+                    calendar.style.bottom = 'auto';
                 }, 0);
             }
         });

@@ -97,16 +97,12 @@
                         <div class="flex justify-center items-center py-2">
                             <div class="relative w-[155px] h-[151px]">
                                 <div id="task-status-chart" style="width: 155px; height: 151px;"></div>
-                                <!-- Custom Data Labels -->
-                                <!-- Pending (Pink 20%) - Top Left -->
                                 <div class="absolute top-[6px] left-[4px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.15)] z-10 border-2 border-white">
                                     <span class="text-[11px] font-extrabold text-slate-800">20%</span>
                                 </div>
-                                <!-- Inprogress (Brown 20%) - Top Right -->
                                 <div class="absolute top-[6px] right-[4px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.15)] z-10 border-2 border-white">
                                     <span class="text-[11px] font-extrabold text-slate-800">20%</span>
                                 </div>
-                                <!-- Completed (Green 60%) - Bottom -->
                                 <div class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.15)] z-10 border-2 border-white">
                                     <span class="text-[11px] font-extrabold text-slate-800">60%</span>
                                 </div>
@@ -468,11 +464,11 @@
                 series: [{
                     name: 'Background Standard',
                     type: 'bar',
-                    data: [100, 100, 100, 100, 100, 0, 100] // All except Jun
+                    data: [100, 100, 100, 100, 100, 0, 100]
                 }, {
                     name: 'Highlight Solid',
                     type: 'bar',
-                    data: [0, 0, 0, 0, 0, 100, 0] // Jun only
+                    data: [0, 0, 0, 0, 0, 100, 0]
                 }, {
                     name: 'Performance',
                     type: 'line',
@@ -523,7 +519,7 @@
                     },
                     axisBorder: { show: false },
                     axisTicks: { show: false },
-                    tooltip: { enabled: false } // R1: Disable X-axis tooltip
+                    tooltip: { enabled: false }
                 },
                 yaxis: {
                     show: false,
@@ -541,12 +537,10 @@
                 legend: { show: false },
                 tooltip: { 
                     enabled: true,
-                    shared: false,   // R2: Ensure only one tooltip renders per hover event (priority to custom)
-                    intersect: false, // Allow hovering anywhere in the column
+                    shared: false,
+                    intersect: false,
                     custom: function({series, seriesIndex, dataPointIndex, w}) {
-                        // Always grab data from the Performance series (Index 2)
                         var value = w.config.series[2].data[dataPointIndex] * 100;
-                        // Define months locally to ensure correct mapping
                         var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
                         var month = months[dataPointIndex];
                         return '<div class="bg-white border border-slate-100 rounded-xl shadow-[0_4px_10px_rgba(0,0,0,0.08)] px-3 py-1.5 flex items-center gap-1 whitespace-nowrap">' +
