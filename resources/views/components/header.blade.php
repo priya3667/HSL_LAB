@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-40 flex items-center justify-between py-4 md:py-6 mb-8 bg-[#F9FEFF]/80 backdrop-blur-md -mx-4 md:-mx-8 px-4 md:px-8 border-b border-slate-100/50">
+<header class="sticky top-0 z-40 flex items-center justify-between py-4 md:py-4 mb-8 bg-[#F9FEFF]/80 backdrop-blur-md -mx-4 md:-mx-8 px-4 md:px-8 border-b border-slate-100/50">
     <div class="flex flex-col gap-1">
         <h1 class="font-['Mulish'] font-bold text-[18px] md:text-[24.45px] leading-none tracking-normal text-[#303030]">Daily Operations</h1>
         <p class="font-['Mulish'] font-semibold text-[10px] md:text-[12.26px] leading-none tracking-normal text-[#6A6969]">December 19, 2025</p>

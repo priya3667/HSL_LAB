@@ -48,6 +48,16 @@
                 transform: translateX(-50%) !important;
             }
         }
+        /* Specific styling for Patient Flow Chart X-Axis Labels */
+        #patient-flow-chart .apexcharts-xaxis-label tspan:nth-of-type(1) {
+            font-weight: 500;
+            fill: #94a3b8; /* Slate 400 */
+        }
+        #patient-flow-chart .apexcharts-xaxis-label tspan:nth-of-type(2) {
+            font-weight: 800 !important;
+            fill: #1e293b !important; /* Slate 800 */
+            font-size: 12px;
+        }
     </style>
 </head>
 <body class="text-slate-800 antialiased overflow-x-hidden">
@@ -68,7 +78,16 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <x-analytics-card title="Patient Flow">
-                    <div id="patient-flow-chart" class="min-h-[160px] w-full"></div>
+                    <div id="patient-flow-chart" class="min-h-[210px] w-full"></div>
+                    <div class="flex justify-between items-center px-1 mt-1">
+                        <div class="flex flex-row gap-14">
+                            <span class="text-[12px] font-bold text-slate-900">Max</span>
+                            <span class="text-[14px] font-bold text-slate-800">253</span>
+                        
+                            <span class="text-[12px] font-bold text-slate-900">Today</span>
+                            <span class="text-[14px] font-bold text-slate-800">112</span>
+                        </div>
+                    </div>
                 </x-analytics-card>
 
                 <x-analytics-card title="Task Status Distribution">
@@ -76,19 +95,19 @@
                         <div class="flex justify-center items-center py-2">
                             <div class="relative w-[155px] h-[151px]">
                                 <div id="task-status-chart" style="width: 155px; height: 151px;"></div>
-                                <!-- Custom Data Labels with Ellipse Background -->
-                                <div class="absolute top-[20px] left-[10px] w-[34px] h-[32px] flex items-center justify-center bg-contain bg-no-repeat bg-center" style="background-image: url('{{ asset('images/Ellipse 1.svg') }}');">
-                                    <span class="text-[10px] font-bold text-slate-900 pt-1">20%</span>
+                                <!-- Custom Data Labels -->
+                                <div class="absolute top-[18px] left-[8px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-lg z-10 border-2 border-white">
+                                    <span class="text-[11px] font-extrabold text-[#000000]">20%</span>
                                 </div>
-                                <div class="absolute top-[20px] right-[10px] w-[34px] h-[32px] flex items-center justify-center bg-contain bg-no-repeat bg-center" style="background-image: url('{{ asset('images/Ellipse 1.svg') }}');">
-                                    <span class="text-[10px] font-bold text-slate-900 pt-1">20%</span>
+                                <div class="absolute top-[18px] right-[8px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-lg z-10 border-2 border-white">
+                                    <span class="text-[11px] font-extrabold text-[#000000]">20%</span>
                                 </div>
-                                <div class="absolute bottom-[10px] left-1/2 -translate-x-1/2 w-[34px] h-[32px] flex items-center justify-center bg-contain bg-no-repeat bg-center" style="background-image: url('{{ asset('images/Ellipse 1.svg') }}');">
-                                    <span class="text-[10px] font-bold text-slate-900 pt-1">60%</span>
+                                <div class="absolute bottom-[8px] left-1/2 -translate-x-1/2 w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-lg z-10 border-2 border-white">
+                                    <span class="text-[11px] font-extrabold text-[#000000]">60%</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-auto px-4 pb-2 space-y-2">
+                        <div class="mt-auto px-4 pb-2">
                             <div class="flex items-center justify-between text-[12px]">
                                 <div class="flex items-center gap-2">
                                     <div class="w-2.5 h-2.5 rounded-full bg-[#A8BBA3]"></div>
@@ -119,14 +138,16 @@
                 </x-analytics-card>
 
                 <x-analytics-card title="Sales Performance">
-                    <div class="flex flex-col h-full justify-between">
-                        <div id="sales-performance-chart" class="min-h-[160px] w-full"></div>
-                        <div class="px-2 pb-2">
-                            <div class="flex items-center gap-3">
-                                <span class="text-2xl font-bold text-slate-800">30%</span>
-                                <p class="text-[10px] text-slate-500 font-medium leading-tight">
-                                    Your sales performance is 30%<br>better compare to last month
-                                </p>
+                    <div class="flex flex-col h-full bg-white">
+                        <div id="sales-performance-chart" class="w-full" style="height: 150px; margin-top: -5px;"></div>
+                        <div class="px-3 pb-4">
+                            <div class="flex items-center gap-5">
+                                <span class="text-[32px] font-bold text-slate-800 leading-none">30%</span>
+                                <div class="flex flex-col">
+                                    <p class="text-[12px] text-slate-500 font-medium leading-[1.3]">
+                                        Your sales performance is 30%<br>better compare to last month
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -151,11 +172,11 @@
             var options = {
                 series: [{
                     name: 'Patients',
-                    data: [85, 110, 75, 95, 112, 80, 60]
+                    data: [95, 75, 55, 85, 112, 80]
                 }],
                 chart: {
                     type: 'area',
-                    height: 200,
+                    height: 210,
                     toolbar: { show: false },
                     zoom: { enabled: false },
                     sparkline: { enabled: false },
@@ -167,29 +188,40 @@
                 stroke: {
                     curve: 'smooth',
                     width: 2,
-                    colors: ['#B87C4C']
+                    colors: ['#B87C4C'],
+                    dropShadow: {
+                        enabled: true,
+                        top: 2,
+                        left: 0,
+                        blur: 4,
+                        opacity: 0.25,
+                        color: '#000000'
+                    }
                 },
                 fill: {
                     type: 'gradient',
                     gradient: {
                         shadeIntensity: 1,
                         type: 'vertical',
+                        opacityFrom: 1,
+                        opacityTo: 1,
+                        stops: [0, 100],
                         colorStops: [
-                            { offset: 0, color: "#EBD9D1", opacity: 0.6 },
-                            { offset: 100, color: "#A8BBA3", opacity: 0.2 }
+                            { offset: 0, color: "#EBD9D1", opacity: 1 },
+                            { offset: 100, color: "#A8BBA3", opacity: 1 }
                         ]
                     }
                 },
                 xaxis: {
                     type: 'category',
-                    categories: [['Mon', '15'], ['Tue', '16'], ['Wed', '17'], ['Thu', '18'], ['Fri', '19'], ['Sat', '20'], ['Sun', '21']],
+                    categories: [['Mon', '15'], ['Tue', '16'], ['Wed', '17'], ['Thu', '18'], ['Fri', '19'], ['Sat', '20']],
                     position: 'top',
                     labels: {
                         show: true,
                         style: {
-                            colors: '#2E2E30',
-                            fontSize: '12px',
-                            fontWeight: 700
+                            colors: '#94a3b8',
+                            fontSize: '11px',
+                            fontWeight: 600
                         },
                         rotate: 0,
                         offsetY: 0
@@ -203,27 +235,29 @@
                 },
                 grid: {
                     show: true,
-                    borderColor: '#B1B1B1',
+                    borderColor: '#EEF0F2',
                     strokeDashArray: 0,
                     position: 'back',
                     xaxis: { lines: { show: true } },
                     yaxis: { lines: { show: false } },
-                    padding: { top: 20, right: 0, bottom: 0, left: 0 }
+                    padding: { top: 20, right: 0, bottom: 0, left: 10 }
                 },
                 annotations: {
                     xaxis: [{
-                        x: '19',
-                        borderColor: '#001DFF',
+                        x: 'Fri',
+                        borderColor: '#4361EE',
                         borderWidth: 1.5,
-                        label: {
-                            show: false
-                        }
+                        strokeDashArray: 0,
+                        label: { show: false }
                     }],
                     points: [{
-                        x: '19',
+                        x: 'Fri',
                         y: 112,
                         marker: {
-                            size: 0
+                            size: 4,
+                            fillColor: '#fff',
+                            strokeColor: '#B87C4C',
+                            strokeWidth: 2
                         },
                         label: {
                             borderColor: '#E8E7E7',
@@ -237,15 +271,16 @@
                                 fontWeight: 700,
                                 padding: { left: 10, right: 10, top: 4, bottom: 4 }
                             },
-                            offsetY: -10
+                            offsetY: -6
                         }
                     }]
                 },
                 tooltip: {
                     enabled: true,
                     custom: function({series, seriesIndex, dataPointIndex, w}) {
-                        return '<div class="px-3 py-1 bg-white border border-[#E8E7E7] rounded-lg shadow-sm text-[11px] font-bold text-[#B87C4C]">' +
-                            series[seriesIndex][dataPointIndex] + ' Patients' +
+                        return '<div class="px-3 py-1 bg-white border border-[#E8E7E7] rounded-lg shadow-sm text-[11px] font-bold">' +
+                            '<span class="text-[#B87C4C]">' + series[seriesIndex][dataPointIndex] + ":" + '</span>' +
+                            '<span class="text-[#939393]"> Patients Flow Today</span>' +
                             '</div>';
                     }
                 },
@@ -269,8 +304,8 @@
                     sparkline: { enabled: false },
                     fontFamily: 'Plus Jakarta Sans, sans-serif'
                 },
-                labels: ['Completed', 'Inprogress', 'Pending'],
-                colors: ['#A8BBA3', '#B87C4C', '#EBD9D1'],
+                labels: ['Completed', 'Pending', 'Inprogress'],
+                colors: ['#A8BBA3', '#EBD9D1', '#B87C4C'],
                 stroke: { width: 0 },
                 states: {
                     hover: { filter: { type: 'none' } },
@@ -284,28 +319,31 @@
                         startAngle: 72,
                         expandOnClick: false,
                         donut: {
-                            size: '70%',
+                            size: '50%',
                             labels: {
                                 show: true,
                                 name: {
                                     show: true,
                                     fontSize: '14px',
-                                    fontWeight: 600,
-                                    color: '#939393',
-                                    offsetY: 20
+                                    fontWeight: 700,
+                                    color: '#000000',
+                                    offsetY: 18
                                 },
                                 value: {
                                     show: true,
-                                    fontSize: '32px',
+                                    fontSize: '24px',
                                     fontWeight: 800,
-                                    color: '#2E2E30',
-                                    offsetY: -15,
+                                    color: '#000000',
+                                    offsetY: -12,
                                     formatter: function (val) { return '156' }
                                 },
                                 total: {
                                     show: true,
+                                    showAlways: true,
                                     label: 'Total',
-                                    color: '#939393',
+                                    color: '#000000',
+                                    fontSize: '14px',
+                                    fontWeight: 700,
                                     formatter: function (w) { return '156' }
                                 }
                             }
@@ -322,22 +360,22 @@
             var inventoryOptions = {
                 series: [{
                     name: 'Used Today',
-                    data: [45, 70, 47, 65, 85, 40]
+                    data: [35, 70, 45, 60]
                 }, {
                     name: 'Used Yesterday',
-                    data: [25, 55, 30, 50, 65, 25]
+                    data: [25, 45, 30, 40]
                 }],
                 chart: {
                     type: 'bar',
-                    height: 200,
+                    height: 250,
                     toolbar: { show: false },
                     fontFamily: 'Plus Jakarta Sans, sans-serif'
                 },
                 plotOptions: {
                     bar: {
                         horizontal: false,
-                        columnWidth: '30%',
-                        borderRadius: 2,
+                        columnWidth: '40%',
+                        borderRadius: 0,
                         borderRadiusApplication: 'end'
                     }
                 },
@@ -351,9 +389,17 @@
                 },
                 colors: ['#B87C4C', '#EBD9D1'],
                 xaxis: {
-                    categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
+                    categories: ['Medication', 'Supplies', 'Equipment', 'Usage'],
                     labels: {
-                        show: false
+                        show: true,
+                        rotate: -45,
+                        rotateAlways: true,
+                        style: {
+                            colors: '#94a3b8',
+                            fontSize: '11px',
+                            fontWeight: 600
+                        },
+                        offsetY: 5
                     },
                     axisBorder: { show: false },
                     axisTicks: { show: false }
@@ -365,9 +411,9 @@
                     labels: {
                         show: true,
                         style: {
-                            colors: '#767676',
-                            fontSize: '10px',
-                            fontWeight: 500
+                            colors: '#94a3b8',
+                            fontSize: '11px',
+                            fontWeight: 600
                         },
                         formatter: function(val) {
                             return Math.round(val);
@@ -387,23 +433,21 @@
                     show: true,
                     position: 'top',
                     horizontalAlign: 'left',
-                    fontSize: '11px',
-                    fontWeight: 600,
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    labels: {
+                        colors: '#94a3b8'
+                    },
                     markers: {
-                        width: 8,
-                        height: 8,
-                        radius: 12,
-                        offsetY: 0
+                        width: 0,
+                        height: 0,
+                        radius: 2,
+                        offsetX: -4,
+                        offsetY: 2
                     },
                     itemMargin: {
                         horizontal: 10,
                         vertical: 0
-                    },
-                    onItemClick: {
-                        toggleDataSeries: true
-                    },
-                    onItemHover: {
-                        highlightDataSeries: true
                     }
                 },
                 tooltip: {
@@ -414,10 +458,6 @@
                         formatter: function(val) {
                             return val + ' units';
                         }
-                    },
-                    style: {
-                        fontSize: '11px',
-                        fontWeight: 600
                     }
                 }
             };
@@ -433,85 +473,96 @@
                 }, {
                     name: 'Performance',
                     type: 'line',
-                    data: [45, 75, 35, 60, 35, 55, 25]
+                    data: [45, 80, 40, 65, 45, 60, 35]
                 }],
                 chart: {
                     type: 'line',
-                    height: 160,
+                    height: 150,
                     toolbar: { show: false },
-                    fontFamily: 'Plus Jakarta Sans, sans-serif'
+                    fontFamily: 'Plus Jakarta Sans, sans-serif',
+                    zoom: { enabled: false },
+                    sparkline: { enabled: false }
                 },
                 plotOptions: {
                     bar: {
-                        columnWidth: '80%',
-                        borderRadius: 4
+                        columnWidth: '95%',
+                        borderRadius: 4,
+                        colors: {
+                            ranges: [{
+                                from: 0,
+                                to: 100,
+                                color: '#F9F9F9'
+                            }]
+                        }
                     }
                 },
                 stroke: {
                     curve: 'smooth',
                     width: [0, 3]
                 },
-                fill: {
-                    opacity: [1, 1]
-                },
-                colors: ['#FCF8F6', '#B87C4C'], 
-                dataLabels: {
-                    enabled: false
-                },
+                colors: ['#F9F9F9', '#B87C4C'], 
                 xaxis: {
                     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
                     labels: {
                         show: true,
                         style: {
-                            colors: '#767676',
+                            colors: ['#767676', '#767676', '#767676', '#767676', '#767676', '#767676', '#B87C4C'],
                             fontSize: '11px',
-                            fontWeight: 500
+                            fontWeight: 600
                         },
-                        rotate: 0
+                        formatter: function(val) {
+                            if (['Jan', 'Mar', 'May', 'Jul'].includes(val)) return val;
+                            return '';
+                        },
+                        rotate: 0,
+                        offsetY: 0
                     },
                     axisBorder: { show: false },
                     axisTicks: { show: false }
                 },
                 yaxis: {
                     show: false,
-                    max: 100
+                    max: 110,
+                    min: 0
                 },
                 grid: {
-                    show: false
+                    show: false,
+                    padding: { top: 0, bottom: 0, left: 15, right: 15 }
                 },
                 legend: {
                     show: false
                 },
+                tooltip: {
+                    enabled: false
+                },
+                markers: {
+                    size: 0,
+                    hover: { size: 0 }
+                },
+                states: {
+                    hover: { filter: { type: 'none' } },
+                    active: { filter: { type: 'none' } }
+                },
                 annotations: {
                     points: [{
                         x: 'May',
-                        y: 35,
-                        marker: {
-                            size: 4,
-                            fillColor: '#fff',
-                            strokeColor: '#B87C4C',
-                            strokeWidth: 2,
-                            radius: 2
-                        },
+                        y: 45,
                         label: {
                             borderColor: '#E8E7E7',
-                            style: {
-                                color: '#B87C4C',
-                                background: '#fff',
-                                fontSize: '10px', 
-                                fontWeight: 700,
-                                padding: { left: 8, right: 8, top: 4, bottom: 4 }
-                            },
+                            borderRadius: 15,
+                            borderWidth: 1,
                             text: '4500: Low sales in May',
-                            offsetY: -30
-                        }
+                            style: {
+                                color: '#767676',
+                                background: '#fff',
+                                fontSize: '11px',
+                                fontWeight: 700,
+                                padding: { left: 12, right: 12, top: 6, bottom: 6 }
+                            },
+                            offsetY: -35
+                        },
+                        marker: { size: 0 }
                     }]
-                },
-                tooltip: {
-                    enabled: true,
-                    style: {
-                        fontSize: '11px'
-                    }
                 }
             };
 
