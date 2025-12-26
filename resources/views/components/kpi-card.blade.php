@@ -10,7 +10,7 @@
     $iconStyle = $bgStyles[$color] ?? $bgStyles['blue'];
 @endphp
 
-<div class="bg-white p-4 md:p-5 rounded-xl border border-[#E8E7E7] shadow-[0px_4px_4px_0px_#00000040] flex flex-col gap-4">
+<div {{ $attributes->merge(['class' => 'bg-white p-4 md:p-5 rounded-xl border border-[#E8E7E7] shadow-[0px_4px_4px_0px_#00000040] flex flex-col gap-4']) }}>
     <div class="flex items-center gap-3 md:gap-4">
         <div class="w-10 h-10 md:w-12 md:h-12 rounded-lg {{ $iconStyle }} flex items-center justify-center flex-shrink-0">
             {!! $icon !!}

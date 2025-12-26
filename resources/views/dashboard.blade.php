@@ -58,6 +58,14 @@
             fill: #1e293b !important; /* Slate 800 */
             font-size: 12px;
         }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .component-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .component-scroll {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
     </style>
 </head>
@@ -70,15 +78,15 @@
             
             <x-header />
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <x-kpi-card title="Patients Ready" value="42" subtext="31 discharges pending" color="green" icon="<img src='{{ asset('images/tick.svg') }}'>" />
-                <x-kpi-card title="Pending Disclosures" value="8" subtext="Awaiting Review" color="orange" icon="<img src='{{ asset('images/pending.svg') }}'>" />
-                <x-kpi-card title="Open Tasks" value="123" subtext="86 Critical" color="blue" icon="<img src='{{ asset('images/Open_task.svg') }}'>" />
-                <x-kpi-card title="Low Inventory Alerts" value="3" subtext="Critical Items Low" color="red" icon="<img src='{{ asset('images/red_alert.svg') }}'>" />
+            <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 py-4 sm:py-0 sm:mb-8 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible component-scroll">
+                <x-kpi-card title="Patients Ready" value="42" subtext="31 discharges pending" color="green" icon="<img src='{{ asset('images/tick.svg') }}'>" class="min-w-full snap-center sm:min-w-0" />
+                <x-kpi-card title="Pending Disclosures" value="8" subtext="Awaiting Review" color="orange" icon="<img src='{{ asset('images/pending.svg') }}'>" class="min-w-full snap-center sm:min-w-0" />
+                <x-kpi-card title="Open Tasks" value="123" subtext="86 Critical" color="blue" icon="<img src='{{ asset('images/Open_task.svg') }}'>" class="min-w-full snap-center sm:min-w-0" />
+                <x-kpi-card title="Low Inventory Alerts" value="3" subtext="Critical Items Low" color="red" icon="<img src='{{ asset('images/red_alert.svg') }}'>" class="min-w-full snap-center sm:min-w-0" />
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(24,minmax(0,1fr))] gap-6 mb-8">
-                <x-analytics-card title="Patient Flow" height="h-[340px]" class="lg:col-span-7">
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-[repeat(24,minmax(0,1fr))] gap-4 md:gap-6 mb-8 md:pb-0">
+                <x-analytics-card title="Patient Flow" height="h-[340px]" class="col-span-2 md:col-span-1 lg:col-span-7">
                     <div id="patient-flow-chart" class="min-h-[220px] w-full -mt-2"></div>
                     <div class="flex justify-between items-center px-4 -mt-6 w-full">
                         <div class="flex items-center justify-between w-[45%] gap-2">
@@ -92,11 +100,11 @@
                     </div>
                 </x-analytics-card>
 
-                <x-analytics-card title="Task Status Distribution" class="lg:col-span-5">
+                <x-analytics-card title="Task Status Distribution" mobileTitleSize="text-[15px]" class="col-span-1 lg:col-span-5">
                     <div class="flex flex-col h-full">
                         <div class="flex justify-center items-center py-2">
-                            <div class="relative w-[155px] h-[151px]">
-                                <div id="task-status-chart" style="width: 155px; height: 151px;"></div>
+                            <div class="relative w-[175px] h-[171px]">
+                                <div id="task-status-chart" style="width: 175px; height: 171px; transform: scale(1.15);"></div>
                                 <div class="absolute top-[6px] left-[4px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.15)] z-10 border-2 border-white">
                                     <span class="text-[11px] font-extrabold text-slate-800">20%</span>
                                 </div>
@@ -134,26 +142,26 @@
                     </div>
                 </x-analytics-card>
 
-                <x-analytics-card title="Inventory Usage Trend" class="lg:col-span-6">
-                    <div class="flex items-center gap-6 px-1 mb-2">
+                <x-analytics-card title="Inventory Usage Trend" mobileTitleSize="text-[15px]" class="col-span-1 lg:col-span-6">
+                    <div class="flex items-center gap-2 md:gap-6 px-1 mb-2">
                         <div class="flex items-center gap-2">
                             <div class="w-2.5 h-2.5 rounded-full bg-[#B87C4C]"></div>
-                            <span class="text-[12px] font-bold text-[#94a3b8]">Used Today</span>
+                            <span class="font-['Inter'] font-bold text-[7.85px] leading-none text-[#767676] md:text-[12px] md:font-['Plus_Jakarta_Sans'] md:text-[#94a3b8]">Used Today</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <div class="w-2.5 h-2.5 rounded-full bg-[#EBD9D1]"></div>
-                            <span class="text-[12px] font-bold text-[#94a3b8]">Used Yesterday</span>
+                            <span class="font-['Inter'] font-bold text-[7.85px] leading-none text-[#767676] md:text-[12px] md:font-['Plus_Jakarta_Sans'] md:text-[#94a3b8]">Used Yesterday</span>
                         </div>
                     </div>
                     <div id="inventory-usage-chart" class="min-h-[160px] w-full"></div>
                 </x-analytics-card>
 
-                <x-analytics-card title="Sales Performance" class="lg:col-span-6">
+                <x-analytics-card title="Sales Performance" class="col-span-2 md:col-span-1 lg:col-span-6">
                     <div class="flex flex-col h-full bg-white">
                         <div class="relative w-full h-[200px] mt-[-5px] group">
                             <div id="sales-performance-chart" class="w-full h-full"></div>
                         </div>
-                        <div class="px-3 pb-4">
+                        <div class="px-3 pb-4 flex justify-center">
                             <div class="flex items-center gap-1.5">
                                 <span class="font-['Inter'] font-bold text-[20.07px] text-[#2E2E30] leading-none">30%</span>
                                 <div class="flex flex-col">
@@ -172,13 +180,6 @@
             </div>
         </div>
     </main>
-
-    <div class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-slate-100 p-4 flex justify-around items-center md:hidden z-50">
-        <button class="text-slate-400 flex flex-col items-center gap-1"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span class="text-[4px] font-bold">SEARCH</span></button>
-        <button onclick="toggleSidebar()" class="-mt-10 w-14 h-14 bg-slate-900 text-white rounded-full shadow-lg flex items-center justify-center border-4 border-white active:scale-95 transition-transform"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-        <button class="text-slate-400 flex flex-col items-center gap-1"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="text-[4px] font-bold">PROFILE</span></button>
-    </div>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -311,8 +312,10 @@
                 series: [20, 60, 20],
                 chart: {
                     type: 'donut',
-                    height: 151,
-                    width: 155,
+                    height: '100%',
+                    width: '100%',
+                    offsetX: 0,
+                    offsetY: 0,
                     animations: { enabled: false },
                     sparkline: { enabled: false },
                     fontFamily: 'Plus Jakarta Sans, sans-serif'
@@ -332,7 +335,7 @@
                         startAngle: 0,
                         expandOnClick: false,
                         donut: {
-                            size: '55%',
+                            size: '40%',
                             labels: {
                                 show: true,
                                 name: {
