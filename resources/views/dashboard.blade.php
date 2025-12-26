@@ -139,12 +139,14 @@
 
                 <x-analytics-card title="Sales Performance">
                     <div class="flex flex-col h-full bg-white">
-                        <div id="sales-performance-chart" class="w-full" style="height: 150px; margin-top: -5px;"></div>
+                        <div class="relative w-full h-[200px] mt-[-5px] group">
+                            <div id="sales-performance-chart" class="w-full h-full"></div>
+                        </div>
                         <div class="px-3 pb-4">
-                            <div class="flex items-center gap-5">
-                                <span class="text-[32px] font-bold text-slate-800 leading-none">30%</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="font-['Inter'] font-bold text-[20.07px] text-[#2E2E30] leading-none">30%</span>
                                 <div class="flex flex-col">
-                                    <p class="text-[12px] text-slate-500 font-medium leading-[1.3]">
+                                    <p class="font-['Inter'] font-normal text-[12.04px] text-[#767676] leading-none">
                                         Your sales performance is 30%<br>better compare to last month
                                     </p>
                                 </div>
@@ -467,9 +469,13 @@
 
             var salesOptions = {
                 series: [{
-                    name: 'Background',
+                    name: 'Background Standard',
                     type: 'bar',
-                    data: [100, 100, 100, 100, 100, 100, 100]
+                    data: [100, 100, 100, 100, 100, 0, 100] // All except Jun
+                }, {
+                    name: 'Highlight Solid',
+                    type: 'bar',
+                    data: [0, 0, 0, 0, 0, 100, 0] // Jun only
                 }, {
                     name: 'Performance',
                     type: 'line',
@@ -477,7 +483,8 @@
                 }],
                 chart: {
                     type: 'line',
-                    height: 150,
+                    height: 200,
+                    stacked: true,
                     toolbar: { show: false },
                     fontFamily: 'Plus Jakarta Sans, sans-serif',
                     zoom: { enabled: false },
@@ -485,85 +492,74 @@
                 },
                 plotOptions: {
                     bar: {
-                        columnWidth: '95%',
-                        borderRadius: 4,
-                        colors: {
-                            ranges: [{
-                                from: 0,
-                                to: 100,
-                                color: '#F9F9F9'
-                            }]
-                        }
+                        columnWidth: '94%',
+                        borderRadius: 3,
+                        borderRadiusApplication: 'end'
                     }
                 },
                 stroke: {
                     curve: 'smooth',
-                    width: [0, 3]
+                    width: [0, 0, 2],
+                    colors: ['transparent', 'transparent', '#B87C4C']
                 },
-                colors: ['#F9F9F9', '#B87C4C'], 
+                fill: {
+                    type: ['solid', 'solid', 'solid'],
+                    opacity: [1, 1, 1]
+                },
+                colors: ['#fbf7f4', '#f2e4db', '#B87C4C'], 
                 xaxis: {
                     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
                     labels: {
                         show: true,
                         style: {
-                            colors: ['#767676', '#767676', '#767676', '#767676', '#767676', '#767676', '#B87C4C'],
-                            fontSize: '11px',
-                            fontWeight: 600
+                            colors: ['#2E2E30', '#2E2E30', '#2E2E30', '#2E2E30', '#2E2E30', '#2E2E30', '#B87C4C'],
+                            fontSize: '10.03px',
+                            fontWeight: 400,
+                            fontFamily: 'Inter, sans-serif'
                         },
                         formatter: function(val) {
                             if (['Jan', 'Mar', 'May', 'Jul'].includes(val)) return val;
                             return '';
                         },
                         rotate: 0,
-                        offsetY: 0
+                        offsetY: -5
                     },
                     axisBorder: { show: false },
-                    axisTicks: { show: false }
+                    axisTicks: { show: false },
+                    tooltip: { enabled: false } // R1: Disable X-axis tooltip
                 },
                 yaxis: {
                     show: false,
-                    max: 110,
+                    max: 100,
                     min: 0
                 },
                 grid: {
                     show: false,
-                    padding: { top: 0, bottom: 0, left: 15, right: 15 }
-                },
-                legend: {
-                    show: false
-                },
-                tooltip: {
-                    enabled: false
-                },
-                markers: {
-                    size: 0,
-                    hover: { size: 0 }
+                    padding: { top: 0, bottom: 0, left: -12, right: -12 }
                 },
                 states: {
                     hover: { filter: { type: 'none' } },
                     active: { filter: { type: 'none' } }
                 },
-                annotations: {
-                    points: [{
-                        x: 'May',
-                        y: 45,
-                        label: {
-                            borderColor: '#E8E7E7',
-                            borderRadius: 15,
-                            borderWidth: 1,
-                            text: '4500: Low sales in May',
-                            style: {
-                                color: '#767676',
-                                background: '#fff',
-                                fontSize: '11px',
-                                fontWeight: 700,
-                                padding: { left: 12, right: 12, top: 6, bottom: 6 }
-                            },
-                            offsetY: -35
-                        },
-                        marker: { size: 0 }
-                    }]
-                }
+                legend: { show: false },
+                tooltip: { 
+                    enabled: true,
+                    shared: false,   // R2: Ensure only one tooltip renders per hover event (priority to custom)
+                    intersect: false, // Allow hovering anywhere in the column
+                    custom: function({series, seriesIndex, dataPointIndex, w}) {
+                        // Always grab data from the Performance series (Index 2)
+                        var value = w.config.series[2].data[dataPointIndex] * 100;
+                        // Define months locally to ensure correct mapping
+                        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+                        var month = months[dataPointIndex];
+                        return '<div class="bg-white border border-slate-100 rounded-xl shadow-[0_4px_10px_rgba(0,0,0,0.08)] px-3 py-1.5 flex items-center gap-1 whitespace-nowrap">' +
+                            '<span class="text-[#B87C4C] font-bold text-[12px] font-[\'Plus_Jakarta_Sans\']">' + value + ':</span>' +
+                            '<span class="text-slate-400 font-bold text-[11px] ml-0.5 font-[\'Plus_Jakarta_Sans\']">Low sales in ' + month + '</span>' +
+                            '</div>';
+                    }
+                },
+                markers: { size: 0, hover: { size: 4, colors: ['#fff'], strokeColors: '#B87C4C', strokeWidth: 2 } },
+                dataLabels: { enabled: false }
             };
 
             var salesChart = new ApexCharts(document.querySelector("#sales-performance-chart"), salesOptions);
