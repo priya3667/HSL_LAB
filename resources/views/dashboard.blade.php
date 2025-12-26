@@ -58,6 +58,7 @@
             fill: #1e293b !important; /* Slate 800 */
             font-size: 12px;
         }
+        }
     </style>
 </head>
 <body class="text-slate-800 antialiased overflow-x-hidden">
@@ -77,15 +78,16 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <x-analytics-card title="Patient Flow">
-                    <div id="patient-flow-chart" class="min-h-[210px] w-full"></div>
-                    <div class="flex justify-between items-center px-1 mt-1">
-                        <div class="flex flex-row gap-14">
-                            <span class="text-[12px] font-bold text-slate-900">Max</span>
-                            <span class="text-[14px] font-bold text-slate-800">253</span>
-                        
-                            <span class="text-[12px] font-bold text-slate-900">Today</span>
-                            <span class="text-[14px] font-bold text-slate-800">112</span>
+                <x-analytics-card title="Patient Flow" height="h-[340px]">
+                    <div id="patient-flow-chart" class="min-h-[220px] w-full -mt-2"></div>
+                    <div class="flex justify-between items-center px-4 -mt-6 w-full">
+                        <div class="flex items-center justify-between w-[45%] gap-2">
+                            <span class="text-[12px] font-bold text-slate-800 whitespace-nowrap">Max</span>
+                            <span class="text-[12px] font-bold text-slate-800 whitespace-nowrap">253</span>
+                        </div>
+                        <div class="flex items-center justify-between w-[45%] gap-2">
+                            <span class="text-[12px] font-bold text-slate-800 whitespace-nowrap">Today</span>
+                            <span class="text-[12px] font-bold text-slate-800 whitespace-nowrap">112</span>
                         </div>
                     </div>
                 </x-analytics-card>
@@ -96,44 +98,57 @@
                             <div class="relative w-[155px] h-[151px]">
                                 <div id="task-status-chart" style="width: 155px; height: 151px;"></div>
                                 <!-- Custom Data Labels -->
-                                <div class="absolute top-[18px] left-[8px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-lg z-10 border-2 border-white">
-                                    <span class="text-[11px] font-extrabold text-[#000000]">20%</span>
+                                <!-- Pending (Pink 20%) - Top Left -->
+                                <div class="absolute top-[6px] left-[4px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.15)] z-10 border-2 border-white">
+                                    <span class="text-[11px] font-extrabold text-slate-800">20%</span>
                                 </div>
-                                <div class="absolute top-[18px] right-[8px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-lg z-10 border-2 border-white">
-                                    <span class="text-[11px] font-extrabold text-[#000000]">20%</span>
+                                <!-- Inprogress (Brown 20%) - Top Right -->
+                                <div class="absolute top-[6px] right-[4px] w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.15)] z-10 border-2 border-white">
+                                    <span class="text-[11px] font-extrabold text-slate-800">20%</span>
                                 </div>
-                                <div class="absolute bottom-[8px] left-1/2 -translate-x-1/2 w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-lg z-10 border-2 border-white">
-                                    <span class="text-[11px] font-extrabold text-[#000000]">60%</span>
+                                <!-- Completed (Green 60%) - Bottom -->
+                                <div class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-[34px] h-[34px] flex items-center justify-center bg-[#F2F5FA] rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.15)] z-10 border-2 border-white">
+                                    <span class="text-[11px] font-extrabold text-slate-800">60%</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-auto px-4 pb-2">
-                            <div class="flex items-center justify-between text-[12px]">
+                        <div class="mt-auto px-2 pb-1 w-full max-w-[190px] mx-auto">
+                            <div class="flex items-center justify-between text-[13px]">
                                 <div class="flex items-center gap-2">
-                                    <div class="w-2.5 h-2.5 rounded-full bg-[#A8BBA3]"></div>
-                                    <span class="font-semibold text-slate-600">Completed</span>
+                                    <div class="w-3 h-3 rounded-full bg-[#A8BBA3]"></div>
+                                    <span class="font-bold text-slate-600">Completed</span>
                                 </div>
-                                <span class="font-bold text-slate-800">60%</span>
+                                <span class="font-extrabold text-slate-800">60%</span>
                             </div>
-                            <div class="flex items-center justify-between text-[12px]">
+                            <div class="flex items-center justify-between text-[13px]">
                                 <div class="flex items-center gap-2">
-                                    <div class="w-2.5 h-2.5 rounded-full bg-[#B87C4C]"></div>
-                                    <span class="font-semibold text-slate-600">Inprogress</span>
+                                    <div class="w-3 h-3 rounded-full bg-[#B87C4C]"></div>
+                                    <span class="font-bold text-slate-600">Inprogress</span>
                                 </div>
-                                <span class="font-bold text-slate-800">20%</span>
+                                <span class="font-extrabold text-slate-800">20%</span>
                             </div>
-                            <div class="flex items-center justify-between text-[12px]">
+                            <div class="flex items-center justify-between text-[13px]">
                                 <div class="flex items-center gap-2">
-                                    <div class="w-2.5 h-2.5 rounded-full bg-[#EBD9D1]"></div>
-                                    <span class="font-semibold text-slate-600">Pending</span>
+                                    <div class="w-3 h-3 rounded-full bg-[#EBD9D1]"></div>
+                                    <span class="font-bold text-slate-600">Pending</span>
                                 </div>
-                                <span class="font-bold text-slate-800">20%</span>
+                                <span class="font-extrabold text-slate-800">20%</span>
                             </div>
                         </div>
                     </div>
                 </x-analytics-card>
 
                 <x-analytics-card title="Inventory Usage Trend">
+                    <div class="flex items-center gap-6 px-1 mb-2">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#B87C4C]"></div>
+                            <span class="text-[12px] font-bold text-[#94a3b8]">Used Today</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#EBD9D1]"></div>
+                            <span class="text-[12px] font-bold text-[#94a3b8]">Used Yesterday</span>
+                        </div>
+                    </div>
                     <div id="inventory-usage-chart" class="min-h-[160px] w-full"></div>
                 </x-analytics-card>
 
@@ -178,7 +193,7 @@
                 }],
                 chart: {
                     type: 'area',
-                    height: 210,
+                    height: 220,
                     toolbar: { show: false },
                     zoom: { enabled: false },
                     sparkline: { enabled: false },
@@ -297,7 +312,7 @@
             chart.render();
 
             var taskOptions = {
-                series: [60, 20, 20],
+                series: [20, 60, 20],
                 chart: {
                     type: 'donut',
                     height: 151,
@@ -306,8 +321,8 @@
                     sparkline: { enabled: false },
                     fontFamily: 'Plus Jakarta Sans, sans-serif'
                 },
-                labels: ['Completed', 'Pending', 'Inprogress'],
-                colors: ['#A8BBA3', '#EBD9D1', '#B87C4C'],
+                labels: ['Inprogress', 'Completed', 'Pending'],
+                colors: ['#B87C4C', '#A8BBA3', '#EBD9D1'],
                 stroke: { width: 0 },
                 states: {
                     hover: { filter: { type: 'none' } },
@@ -318,33 +333,33 @@
                 },
                 plotOptions: {
                     pie: {
-                        startAngle: 72,
+                        startAngle: 0,
                         expandOnClick: false,
                         donut: {
-                            size: '50%',
+                            size: '55%',
                             labels: {
                                 show: true,
                                 name: {
                                     show: true,
-                                    fontSize: '14px',
+                                    fontSize: '12px',
                                     fontWeight: 700,
-                                    color: '#000000',
-                                    offsetY: 18
+                                    color: '#64748b',
+                                    offsetY: 20
                                 },
                                 value: {
                                     show: true,
-                                    fontSize: '24px',
+                                    fontSize: '22px',
                                     fontWeight: 800,
-                                    color: '#000000',
-                                    offsetY: -12,
+                                    color: '#1e293b',
+                                    offsetY: -10,
                                     formatter: function (val) { return '156' }
                                 },
                                 total: {
                                     show: true,
                                     showAlways: true,
                                     label: 'Total',
-                                    color: '#000000',
-                                    fontSize: '14px',
+                                    color: '#0f172a',
+                                    fontSize: '12px',
                                     fontWeight: 700,
                                     formatter: function (w) { return '156' }
                                 }
@@ -429,28 +444,10 @@
                     position: 'back',
                     xaxis: { lines: { show: false } },
                     yaxis: { lines: { show: true } },
-                    padding: { top: 0, right: 0, bottom: 0, left: 10 }
+                    padding: { top: 0, right: 0, bottom: 30, left: 10 }
                 },
                 legend: {
-                    show: true,
-                    position: 'top',
-                    horizontalAlign: 'left',
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    labels: {
-                        colors: '#94a3b8'
-                    },
-                    markers: {
-                        width: 0,
-                        height: 0,
-                        radius: 2,
-                        offsetX: -4,
-                        offsetY: 2
-                    },
-                    itemMargin: {
-                        horizontal: 10,
-                        vertical: 0
-                    }
+                    show: false
                 },
                 tooltip: {
                     enabled: true,
