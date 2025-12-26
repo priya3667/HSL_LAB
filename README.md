@@ -190,15 +190,15 @@ HSL_LAB/
 ├── database/                     # Database migrations and seeders
 ├── public/                       # Public assets
 │   └── images/                   # SVG icons and images
-├── **resources/**
-│   └── **views/**
-│       ├── **dashboard.blade.php**   # Main dashboard view
-│       └── **components/**           # Blade components
-│           ├── **header.blade.php**
-│           ├── **sidebar.blade.php**
-│           ├── **kpi-card.blade.php**
-│           ├── **analytics-card.blade.php**
-│           └── **action-table.blade.php**
+├── resources/
+│   └── views/
+│       ├── dashboard.blade.php   # Main dashboard view
+│       └── components/           # Blade components
+│           ├── header.blade.php
+│           ├── sidebar.blade.php
+│           ├── kpi-card.blade.php
+│           ├── analytics-card.blade.php
+│           └── action-table.blade.php
 ├── routes/
 │   └── web.php                   # Web routes
 ├── .env                          # Environment configuration
