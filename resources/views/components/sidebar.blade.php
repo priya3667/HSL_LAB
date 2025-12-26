@@ -1,5 +1,3 @@
-
-<!-- Desktop Sidebar -->
 <aside id="main-sidebar" class="hidden md:flex fixed inset-y-0 left-0 w-20 bg-white border-r border-slate-100 flex-col items-center py-6 z-50 transition-transform duration-300 ease-in-out">
     <div class="mb-10 px-4">
         <img src="{{ asset('images/logo.png') }}" alt="HSL Labs Logo" class="w-10 h-10 object-contain">
@@ -10,57 +8,44 @@
             <img src="{{ asset('images/Group 18.svg') }}" alt="Dashboard">
         </a>
         <a href="#" class="block w-12 h-12 hover:scale-105 transition-transform">
-            <img src="{{ asset('images/Group 17.svg') }}" alt="Calendar" >
+            <img src="{{ asset('images/Group 17.svg') }}" alt="Calendar">
         </a>
         <a href="#" class="block w-12 h-12 hover:scale-105 transition-transform">
-            <img src="{{ asset('images/Group 16.svg') }}" alt="Messages" >
+            <img src="{{ asset('images/Group 16.svg') }}" alt="Messages">
         </a>
         <a href="#" class="block w-12 h-12 hover:scale-105 transition-transform">
-            <img src="{{ asset('images/Group 15.svg') }}" alt="Analytics" >
+            <img src="{{ asset('images/Group 15.svg') }}" alt="Analytics">
         </a>
         <a href="#" class="block w-12 h-12 hover:scale-105 transition-transform">
-            <img src="{{ asset('images/Group 19.svg') }}" alt="Settings" >
+            <img src="{{ asset('images/Group 19.svg') }}" alt="Settings">
         </a>
         <a href="#" class="block w-12 h-12 hover:scale-105 transition-transform">
-            <img src="{{ asset('images/Group 26.svg') }}" alt="LogOut" >
+            <img src="{{ asset('images/Group 26.svg') }}" alt="LogOut">
         </a>
     </nav>
 </aside>
 
-<!-- Mobile Sticky Footer Navigation -->
 <div class="fixed bottom-0 left-0 right-0 bg-[#FFFFFF] z-50 border-t border-slate-200 px-6 py-3 flex justify-between items-center md:hidden">
-    <!-- Dashboard (Active) -->
     <a href="#" class="flex items-center justify-center w-12 h-12 bg-[#303030] rounded-[14px] shadow-sm">
-        <img src="{{ asset('images/Group 18.svg') }}" class="" alt="Dashboard">
+        <img src="{{ asset('images/Group 18.svg') }}" alt="Dashboard">
     </a>
-    
-    <!-- Calendar -->
     <a href="#" class="flex items-center justify-center w-12 h-12">
         <img src="{{ asset('images/Group 17.svg') }}" class="grayscale opacity-80" alt="Calendar">
     </a>
-
-    <!-- Messages -->
     <a href="#" class="flex items-center justify-center w-12 h-12">
         <img src="{{ asset('images/Group 16.svg') }}" class="grayscale opacity-80" alt="Messages">
     </a>
-
-    <!-- Analytics -->
     <a href="#" class="flex items-center justify-center w-12 h-12">
         <img src="{{ asset('images/Group 15.svg') }}" class="grayscale opacity-80" alt="Analytics">
     </a>
-
-    <!-- Settings -->
     <a href="#" class="flex items-center justify-center w-12 h-12">
         <img src="{{ asset('images/Group 19.svg') }}" class="grayscale opacity-80" alt="Settings">
     </a>
-
-    <!-- Logout -->
     <a href="#" class="flex items-center justify-center w-12 h-12">
         <img src="{{ asset('images/Group 26.svg') }}" class="grayscale opacity-80" alt="Logout">
     </a>
 </div>
 <style>
-    /* Support for safe area on newer iPhones */
     .pb-safe {
         padding-bottom: env(safe-area-inset-bottom, 12px);
     }

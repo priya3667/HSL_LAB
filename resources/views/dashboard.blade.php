@@ -48,24 +48,21 @@
                 transform: translateX(-50%) !important;
             }
         }
-        /* Specific styling for Patient Flow Chart X-Axis Labels */
         #patient-flow-chart .apexcharts-xaxis-label tspan:nth-of-type(1) {
             font-weight: 500;
-            fill: #94a3b8; /* Slate 400 */
+            fill: #94a3b8;
         }
         #patient-flow-chart .apexcharts-xaxis-label tspan:nth-of-type(2) {
             font-weight: 800 !important;
-            fill: #1e293b !important; /* Slate 800 */
+            fill: #1e293b !important;
             font-size: 12px;
         }
-        /* Hide scrollbar for Chrome, Safari and Opera */
         .component-scroll::-webkit-scrollbar {
             display: none;
         }
-        /* Hide scrollbar for IE, Edge and Firefox */
         .component-scroll {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
