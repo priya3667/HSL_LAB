@@ -16,6 +16,7 @@ A premium, high-fidelity operations dashboard for laboratory management, built w
 ## 🛠️ Technology Stack
 
 - **Framework**: Laravel 12.0
+- **Templating Engine**: Blade (Laravel's native templating engine)
 - **PHP**: 8.2+
 - **Styling**: Tailwind CSS 4.1
 - **Charts**: ApexCharts.js
